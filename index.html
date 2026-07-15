@@ -1,321 +1,689 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full bg-stone-900 select-none">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="theme-color" content="#5d3a3a"/>
-    <title>NP Style - Tarjeta Digital Profesional</title>
-    
-    <!-- Tailwind CSS & Iconografía Premium -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NP Style Corte y Color — Tarjeta Digital | KONFÍO ZINC</title>
+<meta name="description" content="Estudio de belleza en Yopal, Casanare. Diseños de color, alisados, terapias Micro Mist y corte.">
 
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-in-up { opacity: 0; animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        
-        /* Efecto de Brillo Elegante Premium (Wow Effect) */
-        @keyframes luxuryGlow {
-            0%, 100 { border-color: rgba(93, 58, 58, 0.4); box-shadow: 0 0 12px rgba(93, 58, 58, 0.2); }
-            50% { border-color: rgba(109, 76, 65, 0.8); box-shadow: 0 0 20px rgba(109, 76, 65, 0.4); }
-        }
-        .wow-salon { animation: luxuryGlow 4s infinite ease-in-out; }
-        
-        /* Efecto de pulso controlado para el botón oficial de WhatsApp */
-        @keyframes whatsappPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 8px 20px -4px rgba(37, 211, 102, 0.4); }
-            50% { transform: scale(1.02); box-shadow: 0 14px 25px -4px rgba(37, 211, 102, 0.6); }
-        }
-        .pulse-whatsapp { animation: whatsappPulse 2s infinite ease-in-out; }
-        
-        .modal-overlay { position: fixed; inset: 0; background: rgba(27, 25, 24, 0.85); backdrop-filter: blur(8px); z-index: 50; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: #fbf8f3; border-radius: 28px; width: 100%; max-w: 326px; transform: scale(0.96); transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); border: 1px solid rgba(93,58,58,0.1); }
-        .modal-overlay.active .modal-content { transform: scale(1); }
-        .app-container { height: 100vh; height: 100dvh; }
-    </style>
+<!-- ============================================================
+     PLANTILLA MAESTRA BASE V2.0 — KONFÍO ZINC
+     Cumple Framework Técnico Universal V2.0 (arquitectura fija de 12 módulos)
+     Splash → Portada → Botones rápidos → Redes → Servicios → Galería →
+     Videos → Testimonios → Cobertura → Información → CTA → Pie de tarjeta
+     Stack: HTML5 + CSS3 + JS vanilla (sin frameworks, cap. 16.5)
+     Uso: duplicar carpeta, editar solo el objeto CONFIG y los módulos
+     dentro de <template>. NUNCA alterar la arquitectura ni el orden.
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+
+<style>
+/* ==================== 1. DESIGN TOKENS (cap. 4) ==================== */
+:root{
+  /* Paleta KONFÍO ZINC por defecto — se sobreescribe en runtime desde CONFIG.colores (cap. 6.1) */
+  --c-primary:#0B0B0F;      /* negro marca */
+  --c-secondary:#F0B429;    /* oro */
+  --c-accent:#00E5FF;       /* cian */
+  --c-warn:#F97316;         /* naranja */
+  --c-surface:#ffffff;
+  --c-surface-alt:#F7F7F9;
+  --c-text:#15151A;
+  --c-text-mute:#6b6b74;
+
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:24px;
+  --radius-full:999px;
+
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:24px; --space-6:32px; --space-7:48px;
+
+  --shadow-sm:0 2px 8px rgba(0,0,0,.08);
+  --shadow-md:0 8px 24px rgba(0,0,0,.12);
+  --shadow-lg:0 16px 40px rgba(0,0,0,.18);
+
+  --font-display:'Syne', sans-serif;
+  --font-body:'Plus Jakarta Sans', sans-serif;
+
+  --dur-fast:180ms; --dur-base:320ms; --dur-slow:600ms;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%;}
+body{
+  font-family:var(--font-body);
+  background:var(--c-surface-alt);
+  color:var(--c-text);
+  -webkit-font-smoothing:antialiased;
+  display:flex; justify-content:center;
+}
+img{max-width:100%; display:block;}
+button{font-family:inherit; cursor:pointer; border:none; background:none;}
+a{color:inherit; text-decoration:none;}
+
+/* ==================== Utilidades mínimas (sin dependencia de Tailwind CDN) ==================== */
+.flex{display:flex;} .flex-col{flex-direction:column;} .items-center{align-items:center;}
+.justify-center{justify-content:center;} .justify-between{justify-content:space-between;}
+.gap-1{gap:var(--space-1);} .gap-2{gap:var(--space-2);} .gap-3{gap:var(--space-3);} .gap-4{gap:var(--space-4);}
+.grid{display:grid;} .text-center{text-align:center;} .hidden{display:none !important;}
+.w-full{width:100%;} .relative{position:relative;} .rounded-full{border-radius:var(--radius-full);}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);}
+
+/* ==================== Contenedor tipo app (cap. 1, 2) ==================== */
+.card-shell{
+  width:100%; max-width:420px; min-height:100vh;
+  background:var(--c-surface);
+  position:relative; overflow-x:hidden;
+  box-shadow:var(--shadow-lg);
+}
+@media (min-width:460px){
+  body{padding:var(--space-5) 0;}
+  .card-shell{min-height:auto; border-radius:var(--radius-lg);}
+}
+
+/* ==================== MÓDULO 1 — SPLASH (cap. 8) ==================== */
+#splash{
+  position:fixed; inset:0; z-index:100;
+  background:var(--c-primary);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:var(--space-3);
+  transition:opacity var(--dur-slow) var(--ease), visibility var(--dur-slow) var(--ease);
+}
+#splash.is-hidden{opacity:0; visibility:hidden; pointer-events:none;}
+#splash img{width:72px; height:72px; object-fit:contain; animation:splashPulse 1.1s ease-in-out infinite;}
+#splash span{color:var(--c-secondary); font-family:var(--font-display); font-size:13px; letter-spacing:.14em; text-transform:uppercase;}
+@keyframes splashPulse{0%,100%{transform:scale(1); opacity:1;} 50%{transform:scale(1.06); opacity:.75;}}
+
+/* ==================== MÓDULO 2 — PORTADA (cap. 3.3, 8.3) ==================== */
+.portada{
+  background:linear-gradient(160deg, var(--c-primary) 0%, #1c1c24 100%);
+  padding:var(--space-6) var(--space-5) var(--space-5);
+  text-align:center; color:#fff;
+}
+.portada .logo{width:52px; height:52px; object-fit:contain; margin:0 auto var(--space-3);}
+.avatar-wrap{position:relative; width:112px; height:112px; margin:0 auto var(--space-4);}
+.avatar-wrap img{width:100%; height:100%; object-fit:cover; border-radius:var(--radius-full); border:3px solid var(--c-secondary);}
+.badge-verificado{
+  position:absolute; bottom:2px; right:2px; width:26px; height:26px; border-radius:var(--radius-full);
+  background:var(--c-accent); color:var(--c-primary); display:flex; align-items:center; justify-content:center;
+  font-size:12px; border:2px solid var(--c-primary);
+}
+.portada h1{font-family:var(--font-display); font-size:24px; font-weight:800; letter-spacing:-.01em;}
+.portada .profesion{color:var(--c-secondary); font-weight:600; font-size:14px; margin-top:2px;}
+.portada .tagline{color:#c9c9d1; font-size:13px; margin-top:var(--space-2); max-width:280px; margin-left:auto; margin-right:auto;}
+.badge-disponible{
+  display:inline-flex; align-items:center; gap:6px; margin-top:var(--space-4);
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
+  padding:6px 14px; border-radius:var(--radius-full); font-size:12px; color:#fff;
+}
+.badge-disponible .dot{width:7px; height:7px; border-radius:50%; background:#22c55e; animation:dotPulse 1.6s infinite;}
+@keyframes dotPulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
+
+/* ==================== MÓDULO 3 — BOTONES RÁPIDOS (cap. 9) ==================== */
+.acciones-rapidas{padding:var(--space-5); display:flex; flex-direction:column; gap:var(--space-3);}
+.btn-principal{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:14px; border-radius:var(--radius-md); font-weight:700; font-size:15px;
+  transition:transform var(--dur-fast) var(--ease);
+}
+.btn-principal:active{transform:scale(.97);}
+.btn-whatsapp{background:#25D366; color:#fff;}
+.btn-llamar{background:var(--c-primary); color:#fff;}
+.acciones-secundarias{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--space-3);}
+.btn-secundario{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px; border-radius:var(--radius-md); background:var(--c-surface-alt);
+  font-weight:600; font-size:13px; color:var(--c-text);
+}
+
+/* Grid navegador de módulos (Servicios, Galería, Videos, Testimonios, Cobertura, Información) */
+.nav-modulos{
+  padding:0 var(--space-5) var(--space-5);
+  display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-3);
+}
+.nav-item{display:flex; flex-direction:column; align-items:center; gap:6px; font-size:11px; color:var(--c-text-mute); font-weight:600;}
+.nav-item .ic{
+  width:52px; height:52px; border-radius:var(--radius-md); background:var(--c-surface-alt);
+  display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--c-primary);
+  transition:transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.nav-item:active .ic{transform:scale(.92); background:var(--c-secondary); color:var(--c-primary);}
+
+/* ==================== MÓDULO 4 — REDES SOCIALES (cap. 10) ==================== */
+/* Regla maestra (cap. 3.2): si no hay datos, el módulo se oculta limpio. Controlado 100% desde CONFIG.redes */
+#redes-row{padding:0 var(--space-5) var(--space-5); display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
+.social-btn{
+  width:42px; height:42px; border-radius:var(--radius-full); background:var(--c-surface-alt);
+  display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--c-primary);
+}
+
+/* ==================== MODALES (contenedor genérico, cap. 7.5) ==================== */
+.modal{
+  position:fixed; inset:0; z-index:90; background:rgba(11,11,15,.6);
+  display:flex; align-items:flex-end; justify-content:center;
+  opacity:0; visibility:hidden; transition:opacity var(--dur-base) var(--ease), visibility var(--dur-base) var(--ease);
+}
+.modal.is-open{opacity:1; visibility:visible;}
+.modal-panel{
+  width:100%; max-width:420px; max-height:86vh; overflow-y:auto;
+  background:var(--c-surface); border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+  padding:var(--space-5); transform:translateY(24px); transition:transform var(--dur-base) var(--ease);
+}
+.modal.is-open .modal-panel{transform:translateY(0);}
+.modal-header{display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--space-4);}
+.modal-header h2{font-family:var(--font-display); font-size:19px;}
+.modal-close{width:32px; height:32px; border-radius:var(--radius-full); background:var(--c-surface-alt); display:flex; align-items:center; justify-content:center;}
+
+/* MÓDULO 5 — SERVICIOS (cap. 11) */
+.servicio-item{display:flex; gap:12px; padding:var(--space-3) 0; border-bottom:1px solid var(--c-surface-alt);}
+.servicio-item .ic{width:42px; height:42px; flex:none; border-radius:var(--radius-sm); background:var(--c-surface-alt); display:flex; align-items:center; justify-content:center; color:var(--c-primary);}
+.servicio-item h3{font-size:14px; font-weight:700;}
+.servicio-item p{font-size:12.5px; color:var(--c-text-mute); margin-top:2px;}
+
+/* MÓDULO 6 — GALERÍA (cap. 12, Swiper obligatorio) */
+.swiper{width:100%; border-radius:var(--radius-md); overflow:hidden;}
+.swiper-slide img{width:100%; aspect-ratio:1/1; object-fit:cover;}
+
+/* MÓDULO 7 — VIDEOS (cap. 13) */
+.video-card{position:relative; border-radius:var(--radius-md); overflow:hidden; margin-bottom:var(--space-3); background:#000;}
+.video-card img{width:100%; aspect-ratio:16/9; object-fit:cover; opacity:.85;}
+.video-card .play{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:34px;}
+.video-card iframe{width:100%; aspect-ratio:16/9; border:0;}
+
+/* MÓDULO 8 — TESTIMONIOS (cap. 14) */
+.testimonio-card{background:var(--c-surface-alt); border-radius:var(--radius-md); padding:var(--space-4); margin-bottom:var(--space-3);}
+.testimonio-card .estrellas{color:var(--c-secondary); font-size:12px; margin-bottom:6px;}
+.testimonio-card p{font-size:13px; color:var(--c-text);}
+.testimonio-card .autor{margin-top:8px; font-size:12px; font-weight:700; color:var(--c-text-mute);}
+
+/* MÓDULO 9 — COBERTURA (cap. 15) */
+.chip{display:inline-block; background:var(--c-surface-alt); padding:6px 12px; border-radius:var(--radius-full); font-size:12px; font-weight:600; margin:0 6px 6px 0;}
+
+/* MÓDULO 10 — INFORMACIÓN (cap. 15) */
+.info-row{display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--c-surface-alt); font-size:13px;}
+.info-row .ic{width:20px; color:var(--c-secondary); flex:none;}
+
+/* ==================== MÓDULO 11 — CTA FINAL (cap. 3.5, 9.6) ==================== */
+/* Reutiliza las MISMAS funciones JS de los botones rápidos — no crea lógica nueva */
+.cta-final{background:var(--c-primary); padding:var(--space-6) var(--space-5); text-align:center; color:#fff;}
+.cta-final h2{font-family:var(--font-display); font-size:18px; margin-bottom:var(--space-2);}
+.cta-final p{font-size:13px; color:#c9c9d1; margin-bottom:var(--space-4);}
+
+/* ==================== MÓDULO 12 — PIE DE TARJETA ==================== */
+/* Regla fija KONFÍO ZINC: SIEMPRE visible, en todas las tarjetas, sin excepción */
+.pie-tarjeta{
+  background:#000; color:rgba(255,255,255,.55); text-align:center;
+  padding:var(--space-4) var(--space-5); font-size:11px; letter-spacing:.02em;
+}
+
+/* Toast */
+#toast{
+  position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+  background:var(--c-primary); color:#fff; padding:10px 18px; border-radius:var(--radius-full);
+  font-size:13px; opacity:0; visibility:hidden; transition:all var(--dur-base) var(--ease); z-index:120;
+}
+#toast.is-visible{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);}
+
+/* Reveal on scroll (AOS-lite, cap. 20) */
+.reveal{opacity:0; transform:translateY(14px); transition:opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);}
+.reveal.is-visible{opacity:1; transform:translateY(0);}
+</style>
 </head>
-<body class="bg-stone-900 w-full flex justify-center items-center overflow-hidden">
+<body>
 
-    <!-- 1. SPLASH SCREEN (Módulo de Marca Obligatorio) -->
-    <div id="splash" class="flex flex-col items-center justify-center">
-        <div class="text-center animate-pulse">
-            <div class="w-20 h-20 mx-auto bg-[#fbf8f3] rounded-full flex items-center justify-center shadow-2xl border-4 border-[#5d3a3a] mb-3">
-                <i class="fas fa-scissors text-2xl text-[#5d3a3a]"></i>
-            </div>
-            <h1 class="text-2xl font-black text-[#fbf8f3] tracking-wider">NP STYLE</h1>
-            <p class="text-[#fbf8f3]/80 text-[10px] font-bold uppercase tracking-widest mt-1">Corte y Color</p>
-        </div>
+<!-- ============================================================
+     MÓDULO 1 — SPLASH
+     ============================================================ -->
+<div id="splash" role="status" aria-live="polite">
+  <img id="splash-logo" src="assets/img/logo.jpg" alt="">
+  <span>KONFÍO ZINC</span>
+</div>
+
+<div class="card-shell">
+
+  <!-- ============================================================
+       MÓDULO 2 — PORTADA
+       ============================================================ -->
+  <header class="portada">
+    <img class="logo" id="portada-logo" src="assets/img/logo.jpg" alt="Logo" onerror="this.style.display='none'">
+    <div class="avatar-wrap">
+      <img id="portada-foto" src="assets/img/perfil.jpg" alt="Foto de perfil">
+      <div class="badge-verificado" id="badge-verificado" title="Perfil verificado"><i class="fa-solid fa-check"></i></div>
     </div>
+    <h1 id="portada-nombre">[[NOMBRE]]</h1>
+    <p class="profesion" id="portada-profesion">[[PROFESIÓN]]</p>
+    <p class="tagline" id="portada-tagline">[[PROPUESTA DE VALOR EN UNA LÍNEA]]</p>
+    <div class="badge-disponible" id="badge-disponible"><span class="dot"></span> Disponible para atenderte</div>
+  </header>
 
-    <!-- APP CONTAINER FIJO (ALTO DE PANTALLA CONTENIDO - SIN SCROLL WEB) -->
-    <div class="app-container w-full max-w-[380px] bg-[#fbf8f3] relative flex flex-col justify-between overflow-hidden shadow-2xl">
-        
-        <!-- CUERPO DE LA APP -->
-        <div class="flex-grow flex flex-col justify-between pb-24 overflow-y-auto">
-            
-            <!-- 2. PORTADA & HERO AJUSTADA (Paleta Corporativa Crema/Marrón) -->
-            <header class="relative bg-gradient-to-b from-[#5d3a3a] via-[#4a2b2b] to-[#2c1717] pt-6 pb-6 px-5 text-center text-white rounded-b-[40px] shadow-2xl flex-shrink-0 border-b border-[#5d3a3a]/20">
-                <div class="absolute top-3 right-4 bg-[#6d4c41] text-[#fbf8f3] font-black px-2.5 py-0.5 rounded-full text-[8px] uppercase tracking-wider shadow-md">
-                    Estudio de Belleza
-                </div>
-                
-                <!-- Título Superior Directo -->
-                <h2 class="text-3xl font-black text-[#fbf8f3] mt-2 tracking-tight">NP Style</h2>
-                <p class="text-amber-200/80 font-bold text-[10px] uppercase tracking-widest mt-0.5">Corte y Color</p>
-                
-                <!-- LOGO CON RUTA INTERNA REQUERIDA (Ubicación de Seguridad Central) -->
-                <div class="w-24 h-24 mx-auto bg-[#fbf8f3] rounded-full flex items-center justify-center border-4 wow-salon p-1 my-3 shadow-lg block overflow-hidden">
-                    <img src="assets/img/logo.png" alt="NP Style Logo" class="w-full h-full object-contain rounded-full" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <!-- Fallback elegante por si aún no has subido la imagen a la carpeta assets -->
-                    <div class="hidden w-full h-full flex-col items-center justify-center text-[#5d3a3a]">
-                        <i class="fas fa-scissors text-xl"></i>
-                        <span class="text-[7px] font-black tracking-tighter uppercase mt-0.5">NP STYLE</span>
-                    </div>
-                </div>
-                
-                <!-- Ubicación Base -->
-                <div class="bg-black/40 rounded-xl p-2 border border-white/10 backdrop-blur-md max-w-[210px] mx-auto shadow-inner">
-                    <p class="text-[8px] uppercase text-amber-200/70 tracking-widest font-bold">Ubicación Base</p>
-                    <p class="text-[11px] font-semibold text-white mt-0.5">Yopal (Casanare)</p>
-                </div>
-            </header>
-
-            <!-- CONTENIDO CENTRAL DE CONVERSIÓN -->
-            <div class="px-5 space-y-3.5 flex-grow flex flex-col justify-center mt-2">
-                
-                <!-- 3. BOTÓN PRINCIPAL ACTUALIZADO CON COLOR OFICIAL DE WHATSAPP (#25D366) -->
-                <div class="fade-in-up" style="animation-delay: 200ms;">
-                    <a href="https://wa.me/573145392108?text=Hola%20NP%20Style,%20me%20gustaría%20agendar%20una%20cita" target="_blank" class="w-full flex items-center justify-center bg-[#25D366] text-white font-black py-3.5 px-4 rounded-xl text-center text-xs uppercase tracking-wider transition-transform transform active:scale-95 shadow-lg shadow-green-500/20 pulse-whatsapp">
-                        <i class="fab fa-whatsapp text-xl mr-2 text-white"></i>¡AGENDAR MI CITA YA!
-                    </a>
-                </div>
-
-                <!-- ESPECIALIDADES FILTRADAS EN TONOS MARRONES -->
-                <div class="grid grid-cols-2 gap-2 fade-in-up" style="animation-delay: 300ms;">
-                    <div class="bg-[#5d3a3a]/5 border border-[#5d3a3a]/10 p-2.5 rounded-xl flex items-center gap-2 shadow-sm">
-                        <div class="w-6 h-6 bg-[#5d3a3a]/10 rounded-lg flex items-center justify-center text-[#5d3a3a] text-xs flex-shrink-0 shadow-inner"><i class="fas fa-wand-magic-sparkles"></i></div>
-                        <span class="text-[10px] font-bold text-stone-700 leading-tight">Diseños de Color</span>
-                    </div>
-                    <div class="bg-[#5d3a3a]/5 border border-[#5d3a3a]/10 p-2.5 rounded-xl flex items-center gap-2 shadow-md">
-                        <div class="w-6 h-6 bg-[#5d3a3a]/10 rounded-lg flex items-center justify-center text-[#5d3a3a] text-xs flex-shrink-0 shadow-inner"><i class="fas fa-sparkles"></i></div>
-                        <span class="text-[10px] font-bold text-stone-700 leading-tight">Alisados Expertos</span>
-                    </div>
-                    <div class="bg-[#5d3a3a]/5 border border-[#5d3a3a]/10 p-2.5 rounded-xl flex items-center gap-2 shadow-md">
-                        <div class="w-6 h-6 bg-[#5d3a3a]/10 rounded-lg flex items-center justify-center text-[#5d3a3a] text-xs flex-shrink-0 shadow-inner"><i class="fas fa-wind"></i></div>
-                        <span class="text-[10px] font-bold text-stone-700 leading-tight">Terapias Micro Mist</span>
-                    </div>
-                    <div class="bg-[#5d3a3a]/5 border border-[#5d3a3a]/10 p-2.5 rounded-xl flex items-center gap-2 shadow-md">
-                        <div class="w-6 h-6 bg-[#5d3a3a]/10 rounded-lg flex items-center justify-center text-[#5d3a3a] text-xs flex-shrink-0 shadow-inner"><i class="fas fa-scissors"></i></div>
-                        <span class="text-[10px] font-bold text-stone-700 leading-tight">Corte Profesional</span>
-                    </div>
-                </div>
-
-                <!-- ENLACE TELEFÓNICO NATIVO -->
-                <div class="fade-in-up" style="animation-delay: 400ms;">
-                    <a href="tel:+573145392108" class="w-full bg-[#5d3a3a]/10 border border-[#5d3a3a]/20 py-2.5 px-2 rounded-xl flex items-center justify-center gap-1.5 text-[10px] font-bold text-[#5d3a3a] transition-colors hover:bg-[#5d3a3a]/20">
-                        <i class="fas fa-phone text-[#5d3a3a]"></i> Llamar Línea Directa: 314 5392108
-                    </a>
-                </div>
-            </div>
-            
-            <!-- ACCIÓN DE GUARDADO VCARD -->
-            <div class="px-5 mt-auto pt-2 fade-in-up" style="animation-delay: 500ms;">
-                <button id="btn-vcard" class="w-full bg-[#5d3a3a] hover:bg-[#4a2b2b] text-white font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider border border-[#4a2b2b] shadow-md">
-                    <i class="fas fa-user-plus text-white"></i> GUARDAR CONTACTO EN AGENDA
-                </button>
-            </div>
-        </div>
-
-        <!-- 12. BARRA DE NAVEGACIÓN INFERIOR COHERENTE -->
-        <nav class="absolute bottom-0 inset-x-0 bg-white border-t border-stone-200 px-2 py-2.5 flex justify-around items-center z-20 shadow-2xl">
-            <button id="nav-services" class="flex flex-col items-center justify-center text-stone-400 hover:text-[#5d3a3a] w-12 transition-colors">
-                <i class="fas fa-list-ul text-base"></i>
-                <span class="text-[9px] font-bold mt-1">Servicios</span>
-            </button>
-            <button id="nav-gallery" class="flex flex-col items-center justify-center text-stone-400 hover:text-[#5d3a3a] w-12 transition-colors">
-                <i class="fas fa-images text-base"></i>
-                <span class="text-[9px] font-bold mt-1">Trabajos</span>
-            </button>
-            <button id="nav-social" class="flex flex-col items-center justify-center text-stone-400 hover:text-[#5d3a3a] w-12 transition-colors">
-                <i class="fas fa-hashtag text-base"></i>
-                <span class="text-[9px] font-bold mt-1">Redes</span>
-            </button>
-            <button id="nav-coverage" class="flex flex-col items-center justify-center text-stone-400 hover:text-[#5d3a3a] w-12 transition-colors">
-                <i class="fas fa-map-location-dot text-base"></i>
-                <span class="text-[9px] font-bold mt-1">Salón</span>
-            </button>
-            <button id="nav-qr" class="flex flex-col items-center justify-center text-stone-400 hover:text-[#5d3a3a] w-12 transition-colors">
-                <i class="fas fa-qrcode text-base"></i>
-                <span class="text-[9px] font-bold mt-1">QR</span>
-            </button>
-        </nav>
+  <!-- ============================================================
+       MÓDULO 3 — BOTONES RÁPIDOS + CTA
+       ============================================================ -->
+  <section class="acciones-rapidas">
+    <button class="btn-principal btn-whatsapp" data-action="whatsapp"><i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp</button>
+    <button class="btn-principal btn-llamar" data-action="llamar"><i class="fa-solid fa-phone"></i> Llamar ahora</button>
+    <div class="acciones-secundarias">
+      <button class="btn-secundario" data-action="guardar"><i class="fa-solid fa-address-card"></i> Guardar contacto</button>
+      <button class="btn-secundario" data-action="compartir"><i class="fa-solid fa-share-nodes"></i> Compartir / QR</button>
     </div>
+  </section>
 
-    <!-- ================= MODALES INTERACTIVOS (RUTAS LOCALES ASSETS) ================= -->
+  <!-- Navegador de módulos internos -->
+  <nav class="nav-modulos" aria-label="Secciones de la tarjeta">
+    <button class="nav-item" data-modal="modal-servicios"><span class="ic"><i class="fa-solid fa-briefcase"></i></span>Servicios</button>
+    <button class="nav-item" data-modal="modal-galeria"><span class="ic"><i class="fa-solid fa-images"></i></span>Galería</button>
+    <button class="nav-item" data-modal="modal-videos"><span class="ic"><i class="fa-solid fa-circle-play"></i></span>Videos</button>
+    <button class="nav-item" data-modal="modal-testimonios"><span class="ic"><i class="fa-solid fa-star"></i></span>Testimonios</button>
+    <button class="nav-item" data-modal="modal-cobertura"><span class="ic"><i class="fa-solid fa-map-location-dot"></i></span>Cobertura</button>
+    <button class="nav-item" data-modal="modal-informacion"><span class="ic"><i class="fa-solid fa-circle-info"></i></span>Información</button>
+  </nav>
 
-    <!-- MODAL DE SERVICIOS -->
-    <div id="modal-services" class="modal-overlay">
-        <div class="modal-content overflow-hidden">
-            <div class="bg-[#5d3a3a] text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
-                <span><i class="fas fa-list-ul mr-2"></i>Nuestros Servicios</span>
-                <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
-            </div>
-            <div class="p-4 max-h-[60vh] overflow-y-auto space-y-3 text-stone-800">
-                <div class="p-3 bg-white rounded-xl border border-stone-200/60 shadow-sm">
-                    <h4 class="font-bold text-[#5d3a3a] text-xs uppercase">Especialistas en Alta Peluquería</h4>
-                    <p class="text-[11px] text-stone-600 mt-1 leading-normal">Diseños de Color avanzados, técnicas de Alisados de alta duración, Terapias capilares vaporizadas Micro Mist y Cortes profesionales adaptados a tu rostro.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  <!-- ============================================================
+       MÓDULO 4 — REDES SOCIALES (se autogenera y se oculta si CONFIG.redes está vacío)
+       ============================================================ -->
+  <div id="redes-row"></div>
 
-    <!-- MODAL DE TRABAJOS (VINCULADO A CARPETA ASSETS) -->
-    <div id="modal-gallery" class="modal-overlay">
-        <div class="modal-content overflow-hidden">
-            <div class="bg-[#5d3a3a] text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
-                <span><i class="fas fa-images mr-2"></i>Galería de Resultados</span>
-                <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
-            </div>
-            <div class="p-4 space-y-3 max-h-[60vh] overflow-y-auto">
-                <div class="bg-white p-2 rounded-xl border border-stone-200 shadow-sm space-y-3">
-                    <!-- Imagen Trabajo 1 (Castaño) -->
-                    <div class="rounded-lg overflow-hidden border border-stone-100">
-                        <img src="assets/img/trabajo1.png" alt="Diseño de Color Bruno/Castaño" class="w-full h-40 object-cover" onerror="this.style.display='none';">
-                    </div>
-                    <!-- Imagen Trabajo 2 (Rubio) -->
-                    <div class="rounded-lg overflow-hidden border border-stone-100">
-                        <img src="assets/img/trabajo2.png" alt="Balayage Rubio Premium" class="w-full h-40 object-cover" onerror="this.style.display='none';">
-                    </div>
-                    <p class="text-[10px] text-stone-500 text-center font-medium leading-normal">Portafolio de transformaciones reales ejecutadas en NP Style.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  <!-- ============================================================
+       MÓDULO 11 — CTA FINAL (reutiliza data-action, misma lógica)
+       ============================================================ -->
+  <section class="cta-final">
+    <h2 id="cta-titulo">¿Hablamos?</h2>
+    <p id="cta-texto">Escríbeme y te respondo personalmente.</p>
+    <button class="btn-principal btn-whatsapp w-full" data-action="whatsapp" style="max-width:280px; margin:0 auto;">
+      <i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp
+    </button>
+  </section>
 
-    <!-- MODAL DE REDES SOCIALES -->
-    <div id="modal-social" class="modal-overlay">
-        <div class="modal-content overflow-hidden">
-            <div class="bg-[#5d3a3a] text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
-                <span><i class="fas fa-hashtag mr-2"></i>Comunidad NP Style</span>
-                <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
-            </div>
-            <div class="p-4 text-center space-y-3">
-                <p class="text-[11px] text-stone-600">Conoce nuestras últimas tendencias e interactúa con nosotros:</p>
-                <div class="flex justify-center gap-4 py-2">
-                    <a href="https://instagram.com" target="_blank" class="w-12 h-12 rounded-full bg-[#5d3a3a]/10 flex items-center justify-center text-[#5d3a3a] text-xl shadow-sm transition-transform active:scale-90"><i class="fab fa-instagram"></i></a>
-                    <a href="https://facebook.com" target="_blank" class="w-12 h-12 rounded-full bg-[#5d3a3a]/10 flex items-center justify-center text-[#5d3a3a] text-xl shadow-sm transition-transform active:scale-90"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://tiktok.com" target="_blank" class="w-12 h-12 rounded-full bg-[#5d3a3a]/10 flex items-center justify-center text-[#5d3a3a] text-xl shadow-sm transition-transform active:scale-90"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+  <!-- ============================================================
+       MÓDULO 12 — PIE DE TARJETA (fijo, obligatorio en todas las tarjetas)
+       ============================================================ -->
+  <footer class="pie-tarjeta">
+    Creado por KONFÍO ZINC — Todos los derechos reservados
+  </footer>
+</div>
 
-    <!-- MODAL DE UBICACIÓN -->
-    <div id="modal-coverage" class="modal-overlay">
-        <div class="modal-content overflow-hidden">
-            <div class="bg-[#5d3a3a] text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
-                <span><i class="fas fa-map-location-dot mr-2"></i>Datos del Salón</span>
-                <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
-            </div>
-            <div class="p-4 space-y-3 text-stone-800 text-[11px]">
-                <div class="p-3 bg-white rounded-xl border border-stone-200/60 shadow-sm flex items-start gap-2.5">
-                    <i class="fas fa-location-dot text-[#5d3a3a] text-sm mt-0.5"></i>
-                    <div>
-                        <h5 class="font-bold text-stone-800">Sede Principal</h5>
-                        <p class="text-[10px] text-stone-500 mt-0.5 font-semibold">Atención exclusiva en la ciudad de Yopal, Casanare.</p>
-                    </div>
-                </div>
-                <div class="p-3 bg-white rounded-xl border border-stone-200/60 shadow-sm space-y-1.5 font-medium">
-                    <div class="flex justify-between border-b pb-1"><span>Modalidad:</span><span class="font-bold text-[#5d3a3a]">Cita Previa</span></div>
-                    <div class="flex justify-between"><span>Asesoría Capilar:</span><span class="text-emerald-700 font-bold">Personalizada</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- ============================================================
+     MÓDULO 5 — MODAL SERVICIOS (máx. 6, cap. 11.1)
+     ============================================================ -->
+<div class="modal" id="modal-servicios" data-modal-root>
+  <div class="modal-panel">
+    <div class="modal-header"><h2>Servicios</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="lista-servicios"></div>
+  </div>
+</div>
 
-    <!-- MODAL DE CÓDIGO QR (APUNTA AL REPOSITORIO PROPIO) -->
-    <div id="modal-qr" class="modal-overlay">
-        <div class="modal-content overflow-hidden">
-            <div class="bg-[#5d3a3a] text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
-                <span><i class="fas fa-qrcode mr-2"></i>Compartir Perfil</span>
-                <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
-            </div>
-            <div class="p-5 text-center">
-                <div id="qrcode" class="flex justify-center p-2.5 bg-white border border-stone-200 rounded-xl inline-block mx-auto shadow-sm"></div>
-                <p class="text-[10px] text-stone-500 mt-3 px-1 leading-normal">Escanea este código desde otro celular para abrir al instante la Tarjeta Digital de NP Style.</p>
-            </div>
-        </div>
-    </div>
+<!-- MÓDULO 6 — MODAL GALERÍA -->
+<div class="modal" id="modal-galeria" data-modal-root>
+  <div class="modal-panel">
+    <div class="modal-header"><h2>Galería</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="swiper" id="swiper-galeria"><div class="swiper-wrapper" id="swiper-wrapper"></div></div>
+  </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Desvanecimiento controlado del Splash Screen
-            setTimeout(() => {
-                const splash = document.getElementById('splash');
-                if(splash) {
-                    splash.style.opacity = '0';
-                    setTimeout(() => splash.style.display = 'none', 400);
-                }
-            }, 1000);
+<!-- MÓDULO 7 — MODAL VIDEOS -->
+<div class="modal" id="modal-videos" data-modal-root>
+  <div class="modal-panel">
+    <div class="modal-header"><h2>Videos</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="lista-videos"></div>
+  </div>
+</div>
 
-            // Controlador de Modales
-            const setupAppModal = (triggerId, modalId) => {
-                const trigger = document.getElementById(triggerId);
-                const modal = document.getElementById(modalId);
-                if (!trigger || !modal) return;
-                
-                trigger.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('active'); });
-                modal.querySelector('.close-modal').addEventListener('click', () => modal.classList.remove('active'));
-                modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
-            };
+<!-- MÓDULO 8 — MODAL TESTIMONIOS -->
+<div class="modal" id="modal-testimonios" data-modal-root>
+  <div class="modal-panel">
+    <div class="modal-header"><h2>Testimonios</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="lista-testimonios"></div>
+  </div>
+</div>
 
-            // Captura automática de la URL de producción actual de GitHub Pages
-            const urlRealProduccion = window.location.href;
+<!-- MÓDULO 9 — MODAL COBERTURA -->
+<div class="modal" id="modal-cobertura" data-modal-root>
+  <div class="modal-panel">
+    <div class="modal-header"><h2>Cobertura</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
+    <p id="cobertura-texto" style="font-size:13px; color:var(--c-text-mute); margin-bottom:var(--space-3);"></p>
+    <div id="cobertura-chips"></div>
+  </div>
+</div>
 
-            // Inicializar botones táctiles de navegación de la barra inferior
-            setupAppModal('nav-services', 'modal-services');
-            setupAppModal('nav-gallery', 'modal-gallery');
-            setupAppModal('nav-social', 'modal-social');
-            setupAppModal('nav-coverage', 'modal-coverage');
-            setupAppModal('nav-qr', 'modal-qr');
+<!-- MÓDULO 10 — MODAL INFORMACIÓN -->
+<div class="modal" id="modal-informacion" data-modal-root>
+  <div class="modal-panel">
+    <div class="modal-header"><h2>Información</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="lista-informacion"></div>
+  </div>
+</div>
 
-            // Generador de QR dinámico a la URL activa
-            const qrBox = document.getElementById("qrcode");
-            if(qrBox) {
-                new QRCode(qrBox, {
-                    text: urlRealProduccion,
-                    width: 144,
-                    height: 144,
-                    colorDark : "#5d3a3a",
-                    colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.H
-                });
-            }
+<!-- Modal Compartir / QR -->
+<div class="modal" id="modal-compartir" data-modal-root>
+  <div class="modal-panel text-center">
+    <div class="modal-header"><h2>Compartir tarjeta</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="qr-code" style="display:flex; justify-content:center; margin:var(--space-3) 0;"></div>
+    <button class="btn-secundario w-full" data-action="copiar-link"><i class="fa-solid fa-link"></i> Copiar enlace</button>
+  </div>
+</div>
 
-            // Descarga de tarjeta vCard corporativa
-            const btnVcard = document.getElementById('btn-vcard');
-            if (btnVcard) {
-                btnVcard.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:NP Style\nORG:NP Style Corte y Color\nTEL;TYPE=CELL,VOICE;PREF=1:+573145392108\nNOTE:Estudio de belleza en Yopal Casanare. Especialistas en diseños de color, alisados, terapias micro mist y corte.\nURL:${urlRealProduccion}\nEND:VCARD`;
-                    const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
-                    const url = URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.download = 'NP_Style_Agenda.vcf';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    URL.revokeObjectURL(url);
-                });
-            }
-        });
-    </script>
+<div id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* ============================================================
+   CONFIG — ÚNICO BLOQUE QUE SE EDITA POR CLIENTE (cap. 6.1, 18.4)
+   No modificar nada fuera de este objeto para adaptar un cliente.
+   ============================================================ */
+const CONFIG = {
+  cliente: {
+    nombre: "NP Style",
+    profesion: "Estudio de Belleza · Corte y Color",
+    tagline: "Diseños de color, alisados y terapias capilares en Yopal",
+    disponible: true,
+    verificado: false // sin foto de perfil personal todavía — se activa cuando Nelson envíe una foto real
+  },
+  colores: {
+    primary:  "#3B2418", // marrón oscuro tomado del logo NP Style
+    secondary:"#B98A5E", // dorado/tostado del logo
+    accent:   "#F4EFE3"  // crema del fondo del logo
+  },
+  contacto: {
+    telefonoDisplay: "+57 314 539 2108",
+    telefonoE164: "+573145392108",
+    whatsapp: "573145392108",
+    mensajeWhatsapp: "Hola NP Style, vi tu tarjeta digital y quiero agendar una cita.",
+    email: ""
+  },
+  urlTarjeta: "https://konfiozinc.github.io/np-style/",
+
+  // MÓDULO 4 — Redes. PENDIENTE: Nelson dijo que sí maneja redes pero no envió los links/usuarios todavía.
+  // En cuanto los mande, se pegan aquí y los botones aparecen solos.
+  redes: {
+    instagram: "",
+    facebook: "",
+    tiktok: "",
+    linkedin: ""
+  },
+
+  // MÓDULO 5 — Servicios confirmados por el cliente. Quedan cupo para 2 más (máx. 6, cap. 11.1)
+  servicios: [
+    { icono:"fa-solid fa-palette", nombre:"Diseños de color", descripcion:"Coloración personalizada según tu tono de piel y estilo." },
+    { icono:"fa-solid fa-wand-magic-sparkles", nombre:"Alisados", descripcion:"Alisado profesional con acabado natural y duradero." },
+    { icono:"fa-solid fa-spray-can-sparkles", nombre:"Terapia Micro Mist", descripcion:"Tratamiento capilar de hidratación profunda." },
+    { icono:"fa-solid fa-scissors", nombre:"Corte", descripcion:"Corte a la medida de tu rostro y estilo de vida." }
+  ],
+
+  // MÓDULO 6 — Galería (fotos reales de trabajos enviadas por el cliente)
+  galeria: [
+    { src:"assets/img/galeria/1.jpg", alt:"Balayage rubio NP Style" },
+    { src:"assets/img/galeria/2.jpg", alt:"Diseño de color e iluminaciones NP Style" }
+  ],
+
+  // MÓDULO 7 — Videos. Pendiente: Nelson no ha enviado video todavía.
+  videos: [
+    // { poster:"assets/img/videos/1.jpg", youtubeId:"", titulo:"" }
+  ],
+
+  // MÓDULO 8 — Testimonios reales únicamente (cap. 14.1). Pendiente: no se han enviado testimonios.
+  testimonios: [
+    // { nombre:"", ciudad:"", texto:"", estrellas:5 }
+  ],
+
+  // MÓDULO 9 — Cobertura
+  cobertura: {
+    texto: "Atención en nuestro estudio en Yopal, Casanare.",
+    zonas: ["Yopal", "Casanare"]
+  },
+
+  // MÓDULO 10 — Información. Pendiente: horario exacto, dirección del estudio y correo.
+  informacion: {
+    horario: "",
+    direccion: "",
+    nit: ""
+  }
+};
+
+/* ============================================================
+   MOTOR — no editar para personalizar un cliente (cap. 18)
+   ============================================================ */
+(function(){
+  "use strict";
+
+  // ---- Aplicar tokens de color desde CONFIG (cap. 6.1) ----
+  const root = document.documentElement.style;
+  root.setProperty('--c-primary', CONFIG.colores.primary);
+  root.setProperty('--c-secondary', CONFIG.colores.secondary);
+  root.setProperty('--c-accent', CONFIG.colores.accent);
+
+  // ---- Portada ----
+  document.getElementById('portada-nombre').textContent = CONFIG.cliente.nombre;
+  document.getElementById('portada-profesion').textContent = CONFIG.cliente.profesion;
+  document.getElementById('portada-tagline').textContent = CONFIG.cliente.tagline;
+  document.title = CONFIG.cliente.nombre + " — Tarjeta Digital | KONFÍO ZINC";
+  if(!CONFIG.cliente.verificado) document.getElementById('badge-verificado').classList.add('hidden');
+  if(!CONFIG.cliente.disponible) document.getElementById('badge-disponible').classList.add('hidden');
+
+  // ---- MÓDULO 4: Redes — se oculta limpio si no hay datos (cap. 3.2) ----
+  const redesMap = [
+    ["instagram","fa-brands fa-instagram"],
+    ["facebook","fa-brands fa-facebook-f"],
+    ["tiktok","fa-brands fa-tiktok"],
+    ["linkedin","fa-brands fa-linkedin-in"]
+  ];
+  const redesRow = document.getElementById('redes-row');
+  let hayRedes = false;
+  redesMap.forEach(([key, icon])=>{
+    const url = CONFIG.redes[key];
+    if(url){
+      hayRedes = true;
+      const a = document.createElement('a');
+      a.href = url; a.target = "_blank"; a.rel = "noopener";
+      a.className = "social-btn";
+      a.innerHTML = `<i class="${icon}"></i>`;
+      redesRow.appendChild(a);
+    }
+  });
+  if(!hayRedes) redesRow.classList.add('hidden');
+
+  // ---- MÓDULO 5: Servicios (límite 6, cap. 11.1) ----
+  const servicios = CONFIG.servicios.slice(0,6);
+  const listaServicios = document.getElementById('lista-servicios');
+  if(servicios.length){
+    servicios.forEach(s=>{
+      listaServicios.insertAdjacentHTML('beforeend', `
+        <div class="servicio-item">
+          <div class="ic"><i class="${s.icono || 'fa-solid fa-star'}"></i></div>
+          <div><h3>${s.nombre}</h3><p>${s.descripcion || ''}</p></div>
+        </div>`);
+    });
+  } else {
+    listaServicios.innerHTML = `<p style="font-size:13px;color:var(--c-text-mute);">Servicios pendientes de cargar.</p>`;
+  }
+
+  // ---- MÓDULO 6: Galería (Swiper, cap. 12.2) ----
+  let swiperInstance = null;
+  if(CONFIG.galeria.length){
+    const wrapper = document.getElementById('swiper-wrapper');
+    CONFIG.galeria.forEach(g=>{
+      wrapper.insertAdjacentHTML('beforeend', `<div class="swiper-slide"><img src="${g.src}" alt="${g.alt||''}" loading="lazy"></div>`);
+    });
+  } else {
+    document.querySelector('[data-modal="modal-galeria"]').classList.add('hidden');
+  }
+
+  // ---- MÓDULO 7: Videos (carga bajo demanda, sin autoplay — cap. 13.3) ----
+  const listaVideos = document.getElementById('lista-videos');
+  if(CONFIG.videos.length){
+    CONFIG.videos.forEach((v,i)=>{
+      listaVideos.insertAdjacentHTML('beforeend', `
+        <div class="video-card" data-video-id="${v.youtubeId}" data-index="${i}">
+          <img src="${v.poster}" alt="${v.titulo||''}" loading="lazy">
+          <div class="play"><i class="fa-solid fa-circle-play"></i></div>
+        </div>`);
+    });
+    listaVideos.querySelectorAll('.video-card').forEach(card=>{
+      card.addEventListener('click', function(){
+        const id = this.dataset.videoId;
+        this.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1" title="Video" allow="accelerometer; autoplay; encrypted-media; gyroscope" allowfullscreen></iframe>`;
+      });
+    });
+  } else {
+    document.querySelector('[data-modal="modal-videos"]').classList.add('hidden');
+  }
+
+  // ---- MÓDULO 8: Testimonios (reales, cap. 14.1) ----
+  const listaTestimonios = document.getElementById('lista-testimonios');
+  if(CONFIG.testimonios.length){
+    CONFIG.testimonios.forEach(t=>{
+      const estrellas = '<i class="fa-solid fa-star"></i>'.repeat(t.estrellas||5);
+      listaTestimonios.insertAdjacentHTML('beforeend', `
+        <div class="testimonio-card">
+          <div class="estrellas">${estrellas}</div>
+          <p>"${t.texto}"</p>
+          <div class="autor">${t.nombre}${t.ciudad ? ' · '+t.ciudad : ''}</div>
+        </div>`);
+    });
+  } else {
+    document.querySelector('[data-modal="modal-testimonios"]').classList.add('hidden');
+  }
+
+  // ---- MÓDULO 9: Cobertura ----
+  if(CONFIG.cobertura.texto || CONFIG.cobertura.zonas.length){
+    document.getElementById('cobertura-texto').textContent = CONFIG.cobertura.texto;
+    const chips = document.getElementById('cobertura-chips');
+    CONFIG.cobertura.zonas.forEach(z=>{
+      chips.insertAdjacentHTML('beforeend', `<span class="chip">${z}</span>`);
+    });
+  } else {
+    document.querySelector('[data-modal="modal-cobertura"]').classList.add('hidden');
+  }
+
+  // ---- MÓDULO 10: Información (coherente con vCard, cap. 15.5) ----
+  const info = CONFIG.informacion;
+  const listaInfo = document.getElementById('lista-informacion');
+  const infoRows = [
+    info.horario ? ["fa-regular fa-clock", info.horario] : null,
+    info.direccion ? ["fa-solid fa-location-dot", info.direccion] : null,
+    CONFIG.contacto.email ? ["fa-regular fa-envelope", CONFIG.contacto.email] : null,
+    info.nit ? ["fa-solid fa-file-invoice", "NIT " + info.nit] : null
+  ].filter(Boolean);
+  if(infoRows.length){
+    infoRows.forEach(([ic,label])=>{
+      listaInfo.insertAdjacentHTML('beforeend', `<div class="info-row"><span class="ic"><i class="${ic}"></i></span>${label}</div>`);
+    });
+  } else {
+    document.querySelector('[data-modal="modal-informacion"]').classList.add('hidden');
+  }
+
+  // ---- Acciones (botones rápidos + CTA final comparten la MISMA lógica, cap. 9.6) ----
+  function accionWhatsApp(){
+    const msg = encodeURIComponent(CONFIG.contacto.mensajeWhatsapp);
+    window.open(`https://wa.me/${CONFIG.contacto.whatsapp}?text=${msg}`, '_blank');
+  }
+  function accionLlamar(){
+    window.location.href = `tel:${CONFIG.contacto.telefonoE164}`;
+  }
+  function accionGuardarContacto(){
+    const v = [
+      "BEGIN:VCARD","VERSION:3.0",
+      `N:${CONFIG.cliente.nombre};;;`,
+      `FN:${CONFIG.cliente.nombre}`,
+      `TITLE:${CONFIG.cliente.profesion}`,
+      `TEL;TYPE=CELL:${CONFIG.contacto.telefonoE164}`,
+      CONFIG.contacto.email ? `EMAIL:${CONFIG.contacto.email}` : "",
+      `URL:${CONFIG.urlTarjeta}`,
+      "END:VCARD"
+    ].filter(Boolean).join("\n");
+    const blob = new Blob([v], {type:"text/vcard"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `${CONFIG.cliente.nombre.replace(/\s+/g,'_')}.vcf`;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    mostrarToast("Contacto guardado");
+  }
+  async function accionCompartir(){
+    if(navigator.share){
+      try{
+        await navigator.share({ title: CONFIG.cliente.nombre, text: CONFIG.cliente.tagline, url: CONFIG.urlTarjeta });
+        return;
+      }catch(e){ /* usuario canceló, no hacer nada */ }
+    }
+    abrirModal('modal-compartir');
+    const qrEl = document.getElementById('qr-code');
+    if(qrEl && !qrEl.dataset.rendered){
+      new QRCode(qrEl, { text: CONFIG.urlTarjeta, width:160, height:160, colorDark: CONFIG.colores.primary });
+      qrEl.dataset.rendered = "1";
+    }
+  }
+  function accionCopiarLink(){
+    navigator.clipboard.writeText(CONFIG.urlTarjeta).then(()=> mostrarToast("Enlace copiado"));
+  }
+
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('[data-action]');
+    if(!btn) return;
+    const map = { whatsapp:accionWhatsApp, llamar:accionLlamar, guardar:accionGuardarContacto, compartir:accionCompartir, "copiar-link":accionCopiarLink };
+    const fn = map[btn.dataset.action];
+    if(fn) fn();
+  });
+
+  // ---- Toast ----
+  let toastTimer;
+  function mostrarToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=> t.classList.remove('is-visible'), 2200);
+  }
+
+  // ---- Modales genéricos ----
+  function abrirModal(id){
+    document.getElementById(id).classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    if(id === 'modal-galeria' && CONFIG.galeria.length && !swiperInstance){
+      swiperInstance = new Swiper('#swiper-galeria', { loop:true, spaceBetween:8 });
+    }
+  }
+  function cerrarModal(modalEl){
+    modalEl.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('[data-modal]').forEach(btn=>{
+    btn.addEventListener('click', ()=> abrirModal(btn.dataset.modal));
+  });
+  document.querySelectorAll('[data-close]').forEach(btn=>{
+    btn.addEventListener('click', ()=> cerrarModal(btn.closest('[data-modal-root]')));
+  });
+  document.querySelectorAll('[data-modal-root]').forEach(modal=>{
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) cerrarModal(modal); });
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.modal.is-open').forEach(cerrarModal);
+    }
+  });
+
+  // ---- MÓDULO 1: Splash (600–1400ms, cap. 8.2) ----
+  const splash = document.getElementById('splash');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.addEventListener('load', function(){
+    setTimeout(()=> splash.classList.add('is-hidden'), reduced ? 0 : 900);
+  });
+
+  // ---- Reveal on scroll (cap. 20.3) ----
+  document.querySelectorAll('.acciones-rapidas, .nav-modulos, #redes-row, .cta-final').forEach(el=> el.classList.add('reveal'));
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('is-visible'); });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+})();
+</script>
 </body>
 </html>
