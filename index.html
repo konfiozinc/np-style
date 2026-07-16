@@ -1,240 +1,236 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>NP Style Corte y Color — Tarjeta Digital | KONFÍO ZINC</title>
-<meta name="description" content="Estudio de belleza en Yopal, Casanare. Diseños de color, alisados, terapias Micro Mist y corte.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>NP Style Corte y Color — Tarjeta Digital | KONFÍO ZINC</title>
+  <meta name="description" content="Estudio de belleza en Yopal, Casanare. Diseños de color, alisados, terapias Micro Mist y corte.">
 
-<!-- ============================================================
-     PLANTILLA MAESTRA BASE V2.0 — KONFÍO ZINC
-     Cumple Framework Técnico Universal V2.0 (arquitectura fija de 12 módulos)
-     Splash → Portada → Botones rápidos → Redes → Servicios → Galería →
-     Videos → Testimonios → Cobertura → Información → CTA → Pie de tarjeta
-     Stack: HTML5 + CSS3 + JS vanilla (sin frameworks, cap. 16.5)
-     Uso: duplicar carpeta, editar solo el objeto CONFIG y los módulos
-     dentro de <template>. NUNCA alterar la arquitectura ni el orden.
-     ============================================================ -->
+  <!-- ============================================================
+       PLANTILLA MAESTRA BASE V2.0 — KONFÍO ZINC
+       Cumple Framework Técnico Universal V2.0 (arquitectura fija de 12 módulos)
+       ============================================================ -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
 
-<style>
-/* ==================== 1. DESIGN TOKENS (cap. 4) ==================== */
-:root{
-  /* Paleta KONFÍO ZINC por defecto — se sobreescribe en runtime desde CONFIG.colores (cap. 6.1) */
-  --c-primary:#0B0B0F;      /* negro marca */
-  --c-secondary:#F0B429;    /* oro */
-  --c-accent:#00E5FF;       /* cian */
-  --c-warn:#F97316;         /* naranja */
-  --c-surface:#ffffff;
-  --c-surface-alt:#F7F7F9;
-  --c-text:#15151A;
-  --c-text-mute:#6b6b74;
+  <style>
+    /* ==================== 1. DESIGN TOKENS ==================== */
+    :root{
+      --c-primary:#0B0B0F;      
+      --c-secondary:#F0B429;    
+      --c-accent:#00E5FF;       
+      --c-warn:#F97316;         
+      --c-surface:#ffffff;
+      --c-surface-alt:#F7F7F9;
+      --c-text:#15151A;
+      --c-text-mute:#6b6b74;
 
-  --radius-sm:10px;
-  --radius-md:16px;
-  --radius-lg:24px;
-  --radius-full:999px;
+      --radius-sm:10px;
+      --radius-md:16px;
+      --radius-lg:24px;
+      --radius-full:999px;
 
-  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
-  --space-5:24px; --space-6:32px; --space-7:48px;
+      --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+      --space-5:24px; --space-6:32px; --space-7:48px;
 
-  --shadow-sm:0 2px 8px rgba(0,0,0,.08);
-  --shadow-md:0 8px 24px rgba(0,0,0,.12);
-  --shadow-lg:0 16px 40px rgba(0,0,0,.18);
+      --shadow-sm:0 2px 8px rgba(0,0,0,.08);
+      --shadow-md:0 8px 24px rgba(0,0,0,.12);
+      --shadow-lg:0 16px 40px rgba(0,0,0,.18);
 
-  --font-display:'Syne', sans-serif;
-  --font-body:'Plus Jakarta Sans', sans-serif;
+      --font-display:'Syne', sans-serif;
+      --font-body:'Plus Jakarta Sans', sans-serif;
 
-  --dur-fast:180ms; --dur-base:320ms; --dur-slow:600ms;
-  --ease:cubic-bezier(.4,0,.2,1);
-}
-@media (prefers-reduced-motion: reduce){
-  *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
-}
-*{box-sizing:border-box; margin:0; padding:0;}
-html,body{height:100%;}
-body{
-  font-family:var(--font-body);
-  background:var(--c-surface-alt);
-  color:var(--c-text);
-  -webkit-font-smoothing:antialiased;
-  display:flex; justify-content:center;
-}
-img{max-width:100%; display:block;}
-button{font-family:inherit; cursor:pointer; border:none; background:none;}
-a{color:inherit; text-decoration:none;}
+      --dur-fast:180ms; --dur-base:320ms; --dur-slow:600ms;
+      --ease:cubic-bezier(.4,0,.2,1);
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+    }
+    *{box-sizing:border-box; margin:0; padding:0;}
+    html,body{height:100%;}
+    body{
+      font-family:var(--font-body);
+      background:var(--c-surface-alt);
+      color:var(--c-text);
+      -webkit-font-smoothing:antialiased;
+      display:flex; justify-content:center;
+    }
+    img{max-width:100%; display:block;}
+    button{font-family:inherit; cursor:pointer; border:none; background:none;}
+    a{color:inherit; text-decoration:none;}
 
-/* ==================== Utilidades mínimas (sin dependencia de Tailwind CDN) ==================== */
-.flex{display:flex;} .flex-col{flex-direction:column;} .items-center{align-items:center;}
-.justify-center{justify-content:center;} .justify-between{justify-content:space-between;}
-.gap-1{gap:var(--space-1);} .gap-2{gap:var(--space-2);} .gap-3{gap:var(--space-3);} .gap-4{gap:var(--space-4);}
-.grid{display:grid;} .text-center{text-align:center;} .hidden{display:none !important;}
-.w-full{width:100%;} .relative{position:relative;} .rounded-full{border-radius:var(--radius-full);}
-.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);}
+    .flex{display:flex;} .flex-col{flex-direction:column;} .items-center{align-items:center;}
+    .justify-center{justify-content:center;} .justify-between{justify-content:space-between;}
+    .gap-1{gap:var(--space-1);} .gap-2{gap:var(--space-2);} .gap-3{gap:var(--space-3);} .gap-4{gap:var(--space-4);}
+    .grid{display:grid;} .text-center{text-align:center;} .hidden{display:none !important;}
+    .w-full{width:100%;} .relative{position:relative;} .rounded-full{border-radius:var(--radius-full);}
+    .sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);}
 
-/* ==================== Contenedor tipo app (cap. 1, 2) ==================== */
-.card-shell{
-  width:100%; max-width:420px; min-height:100vh;
-  background:var(--c-surface);
-  position:relative; overflow-x:hidden;
-  box-shadow:var(--shadow-lg);
-}
-@media (min-width:460px){
-  body{padding:var(--space-5) 0;}
-  .card-shell{min-height:auto; border-radius:var(--radius-lg);}
-}
+    /* Contenedor tipo app */
+    .card-shell{
+      width:100%; max-width:420px; min-height:100vh;
+      background:var(--c-surface);
+      position:relative; overflow-x:hidden;
+      box-shadow:var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .main-content {
+      flex-grow: 1;
+    }
+    @media (min-width:460px){
+      body{padding:var(--space-5) 0;}
+      .card-shell{min-height:auto; border-radius:var(--radius-lg);}
+    }
 
-/* ==================== MÓDULO 1 — SPLASH (cap. 8) ==================== */
-#splash{
-  position:fixed; inset:0; z-index:100;
-  background:var(--c-primary);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:var(--space-3);
-  transition:opacity var(--dur-slow) var(--ease), visibility var(--dur-slow) var(--ease);
-}
-#splash.is-hidden{opacity:0; visibility:hidden; pointer-events:none;}
-#splash img{width:72px; height:72px; object-fit:contain; animation:splashPulse 1.1s ease-in-out infinite;}
-#splash span{color:var(--c-secondary); font-family:var(--font-display); font-size:13px; letter-spacing:.14em; text-transform:uppercase;}
-@keyframes splashPulse{0%,100%{transform:scale(1); opacity:1;} 50%{transform:scale(1.06); opacity:.75;}}
+    /* MÓDULO 1 — SPLASH */
+    #splash{
+      position:fixed; inset:0; z-index:100;
+      background:var(--c-primary);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:var(--space-3);
+      transition:opacity var(--dur-slow) var(--ease), visibility var(--dur-slow) var(--ease);
+    }
+    #splash.is-hidden{opacity:0; visibility:hidden; pointer-events:none;}
+    #splash img{width:72px; height:72px; object-fit:contain; animation:splashPulse 1.1s ease-in-out infinite;}
+    #splash span{color:var(--c-secondary); font-family:var(--font-display); font-size:13px; letter-spacing:.14em; text-transform:uppercase;}
+    @keyframes splashPulse{0%,100%{transform:scale(1); opacity:1;} 50%{transform:scale(1.06); opacity:.75;}}
 
-/* ==================== MÓDULO 2 — PORTADA (cap. 3.3, 8.3) ==================== */
-.portada{
-  background:linear-gradient(160deg, var(--c-primary) 0%, #1c1c24 100%);
-  padding:var(--space-6) var(--space-5) var(--space-5);
-  text-align:center; color:#fff;
-}
-.portada .logo{width:52px; height:52px; object-fit:contain; margin:0 auto var(--space-3);}
-.avatar-wrap{position:relative; width:112px; height:112px; margin:0 auto var(--space-4);}
-.avatar-wrap img{width:100%; height:100%; object-fit:cover; border-radius:var(--radius-full); border:3px solid var(--c-secondary);}
-.badge-verificado{
-  position:absolute; bottom:2px; right:2px; width:26px; height:26px; border-radius:var(--radius-full);
-  background:var(--c-accent); color:var(--c-primary); display:flex; align-items:center; justify-content:center;
-  font-size:12px; border:2px solid var(--c-primary);
-}
-.portada h1{font-family:var(--font-display); font-size:24px; font-weight:800; letter-spacing:-.01em;}
-.portada .profesion{color:var(--c-secondary); font-weight:600; font-size:14px; margin-top:2px;}
-.portada .tagline{color:#c9c9d1; font-size:13px; margin-top:var(--space-2); max-width:280px; margin-left:auto; margin-right:auto;}
-.badge-disponible{
-  display:inline-flex; align-items:center; gap:6px; margin-top:var(--space-4);
-  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
-  padding:6px 14px; border-radius:var(--radius-full); font-size:12px; color:#fff;
-}
-.badge-disponible .dot{width:7px; height:7px; border-radius:50%; background:#22c55e; animation:dotPulse 1.6s infinite;}
-@keyframes dotPulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
+    /* MÓDULO 2 — PORTADA */
+    .portada{
+      background:linear-gradient(160deg, var(--c-primary) 0%, #1c1c24 100%);
+      padding:var(--space-6) var(--space-5) var(--space-5);
+      text-align:center; color:#fff;
+    }
+    .portada .logo{width:52px; height:52px; object-fit:contain; margin:0 auto var(--space-3);}
+    .avatar-wrap{position:relative; width:112px; height:112px; margin:0 auto var(--space-4);}
+    .avatar-wrap img{width:100%; height:100%; object-fit:cover; border-radius:var(--radius-full); border:3px solid var(--c-secondary);}
+    .badge-verificado{
+      position:absolute; bottom:2px; right:2px; width:26px; height:26px; border-radius:var(--radius-full);
+      background:var(--c-accent); color:var(--c-primary); display:flex; align-items:center; justify-content:center;
+      font-size:12px; border:2px solid var(--c-primary);
+    }
+    .portada h1{font-family:var(--font-display); font-size:24px; font-weight:800; letter-spacing:-.01em;}
+    .portada .profesion{color:var(--c-secondary); font-weight:600; font-size:14px; margin-top:2px;}
+    .portada .tagline{color:#c9c9d1; font-size:13px; margin-top:var(--space-2); max-width:280px; margin-left:auto; margin-right:auto;}
+    .badge-disponible{
+      display:inline-flex; align-items:center; gap:6px; margin-top:var(--space-4);
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);
+      padding:6px 14px; border-radius:var(--radius-full); font-size:12px; color:#fff;
+    }
+    .badge-disponible .dot{width:7px; height:7px; border-radius:50%; background:#22c55e; animation:dotPulse 1.6s infinite;}
+    @keyframes dotPulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
 
-/* ==================== MÓDULO 3 — BOTONES RÁPIDOS (cap. 9) ==================== */
-.acciones-rapidas{padding:var(--space-5); display:flex; flex-direction:column; gap:var(--space-3);}
-.btn-principal{
-  display:flex; align-items:center; justify-content:center; gap:10px;
-  padding:14px; border-radius:var(--radius-md); font-weight:700; font-size:15px;
-  transition:transform var(--dur-fast) var(--ease);
-}
-.btn-principal:active{transform:scale(.97);}
-.btn-whatsapp{background:#25D366; color:#fff;}
-.btn-llamar{background:var(--c-primary); color:#fff;}
-.acciones-secundarias{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--space-3);}
-.btn-secundario{
-  display:flex; align-items:center; justify-content:center; gap:8px;
-  padding:12px; border-radius:var(--radius-md); background:var(--c-surface-alt);
-  font-weight:600; font-size:13px; color:var(--c-text);
-}
+    /* MÓDULO 3 — BOTONES RÁPIDOS */
+    .acciones-rapidas{padding:var(--space-5); display:flex; flex-direction:column; gap:var(--space-3);}
+    .btn-principal{
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px; border-radius:var(--radius-md); font-weight:700; font-size:15px;
+      transition:transform var(--dur-fast) var(--ease);
+    }
+    .btn-principal:active{transform:scale(.97);}
+    .btn-whatsapp{background:#25D366; color:#fff;}
+    .btn-llamar{background:var(--c-primary); color:#fff;}
+    .acciones-secundarias{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--space-3);}
+    .btn-secundario{
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      padding:12px; border-radius:var(--radius-md); background:var(--c-surface-alt);
+      font-weight:600; font-size:13px; color:var(--c-text);
+    }
 
-/* Grid navegador de módulos (Servicios, Galería, Videos, Testimonios, Cobertura, Información) */
-.nav-modulos{
-  padding:0 var(--space-5) var(--space-5);
-  display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-3);
-}
-.nav-item{display:flex; flex-direction:column; align-items:center; gap:6px; font-size:11px; color:var(--c-text-mute); font-weight:600;}
-.nav-item .ic{
-  width:52px; height:52px; border-radius:var(--radius-md); background:var(--c-surface-alt);
-  display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--c-primary);
-  transition:transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
-}
-.nav-item:active .ic{transform:scale(.92); background:var(--c-secondary); color:var(--c-primary);}
+    /* Grid navegador de módulos */
+    .nav-modulos{
+      padding:0 var(--space-5) var(--space-5);
+      display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-3);
+    }
+    .nav-item{display:flex; flex-direction:column; align-items:center; gap:6px; font-size:11px; color:var(--c-text-mute); font-weight:600;}
+    .nav-item .ic{
+      width:52px; height:52px; border-radius:var(--radius-md); background:var(--c-surface-alt);
+      display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--c-primary);
+      transition:transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+    }
+    .nav-item:active .ic{transform:scale(.92); background:var(--c-secondary); color:var(--c-primary);}
 
-/* ==================== MÓDULO 4 — REDES SOCIALES (cap. 10) ==================== */
-/* Regla maestra (cap. 3.2): si no hay datos, el módulo se oculta limpio. Controlado 100% desde CONFIG.redes */
-#redes-row{padding:0 var(--space-5) var(--space-5); display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
-.social-btn{
-  width:42px; height:42px; border-radius:var(--radius-full); background:var(--c-surface-alt);
-  display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--c-primary);
-}
+    /* MÓDULO 4 — REDES SOCIALES */
+    #redes-row{padding:0 var(--space-5) var(--space-5); display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
+    .social-btn{
+      width:42px; height:42px; border-radius:var(--radius-full); background:var(--c-surface-alt);
+      display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--c-primary);
+    }
 
-/* ==================== MODALES (contenedor genérico, cap. 7.5) ==================== */
-.modal{
-  position:fixed; inset:0; z-index:90; background:rgba(11,11,15,.6);
-  display:flex; align-items:flex-end; justify-content:center;
-  opacity:0; visibility:hidden; transition:opacity var(--dur-base) var(--ease), visibility var(--dur-base) var(--ease);
-}
-.modal.is-open{opacity:1; visibility:visible;}
-.modal-panel{
-  width:100%; max-width:420px; max-height:86vh; overflow-y:auto;
-  background:var(--c-surface); border-radius:var(--radius-lg) var(--radius-lg) 0 0;
-  padding:var(--space-5); transform:translateY(24px); transition:transform var(--dur-base) var(--ease);
-}
-.modal.is-open .modal-panel{transform:translateY(0);}
-.modal-header{display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--space-4);}
-.modal-header h2{font-family:var(--font-display); font-size:19px;}
-.modal-close{width:32px; height:32px; border-radius:var(--radius-full); background:var(--c-surface-alt); display:flex; align-items:center; justify-content:center;}
+    /* MODALES */
+    .modal{
+      position:fixed; inset:0; z-index:90; background:rgba(11,11,15,.6);
+      display:flex; align-items:flex-end; justify-content:center;
+      opacity:0; visibility:hidden; transition:opacity var(--dur-base) var(--ease), visibility var(--dur-base) var(--ease);
+    }
+    .modal.is-open{opacity:1; visibility:visible;}
+    .modal-panel{
+      width:100%; max-width:420px; max-height:86vh; overflow-y:auto;
+      background:var(--c-surface); border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+      padding:var(--space-5); transform:translateY(24px); transition:transform var(--dur-base) var(--ease);
+    }
+    .modal.is-open .modal-panel{transform:translateY(0);}
+    .modal-header{display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--space-4);}
+    .modal-header h2{font-family:var(--font-display); font-size:19px;}
+    .modal-close{width:32px; height:32px; border-radius:var(--radius-full); background:var(--c-surface-alt); display:flex; align-items:center; justify-content:center;}
 
-/* MÓDULO 5 — SERVICIOS (cap. 11) */
-.servicio-item{display:flex; gap:12px; padding:var(--space-3) 0; border-bottom:1px solid var(--c-surface-alt);}
-.servicio-item .ic{width:42px; height:42px; flex:none; border-radius:var(--radius-sm); background:var(--c-surface-alt); display:flex; align-items:center; justify-content:center; color:var(--c-primary);}
-.servicio-item h3{font-size:14px; font-weight:700;}
-.servicio-item p{font-size:12.5px; color:var(--c-text-mute); margin-top:2px;}
+    /* MÓDULO 5 — SERVICIOS */
+    .servicio-item{display:flex; gap:12px; padding:var(--space-3) 0; border-bottom:1px solid var(--c-surface-alt);}
+    .servicio-item .ic{width:42px; height:42px; flex:none; border-radius:var(--radius-sm); background:var(--c-surface-alt); display:flex; align-items:center; justify-content:center; color:var(--c-primary);}
+    .servicio-item h3{font-size:14px; font-weight:700;}
+    .servicio-item p{font-size:12.5px; color:var(--c-text-mute); margin-top:2px;}
 
-/* MÓDULO 6 — GALERÍA (cap. 12, Swiper obligatorio) */
-.swiper{width:100%; border-radius:var(--radius-md); overflow:hidden;}
-.swiper-slide img{width:100%; aspect-ratio:1/1; object-fit:cover;}
+    /* MÓDULO 6 — GALERÍA */
+    .swiper{width:100%; border-radius:var(--radius-md); overflow:hidden;}
+    .swiper-slide img{width:100%; aspect-ratio:1/1; object-fit:cover;}
 
-/* MÓDULO 7 — VIDEOS (cap. 13) */
-.video-card{position:relative; border-radius:var(--radius-md); overflow:hidden; margin-bottom:var(--space-3); background:#000;}
-.video-card img{width:100%; aspect-ratio:16/9; object-fit:cover; opacity:.85;}
-.video-card .play{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:34px;}
-.video-card iframe{width:100%; aspect-ratio:16/9; border:0;}
+    /* MÓDULO 7 — VIDEOS */
+    .video-card{position:relative; border-radius:var(--radius-md); overflow:hidden; margin-bottom:var(--space-3); background:#000;}
+    .video-card img{width:100%; aspect-ratio:16/9; object-fit:cover; opacity:.85;}
+    .video-card .play{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:34px;}
+    .video-card iframe{width:100%; aspect-ratio:16/9; border:0;}
 
-/* MÓDULO 8 — TESTIMONIOS (cap. 14) */
-.testimonio-card{background:var(--c-surface-alt); border-radius:var(--radius-md); padding:var(--space-4); margin-bottom:var(--space-3);}
-.testimonio-card .estrellas{color:var(--c-secondary); font-size:12px; margin-bottom:6px;}
-.testimonio-card p{font-size:13px; color:var(--c-text);}
-.testimonio-card .autor{margin-top:8px; font-size:12px; font-weight:700; color:var(--c-text-mute);}
+    /* MÓDULO 8 — TESTIMONIOS */
+    .testimonio-card{background:var(--c-surface-alt); border-radius:var(--radius-md); padding:var(--space-4); margin-bottom:var(--space-3);}
+    .testimonio-card .estrellas{color:var(--c-secondary); font-size:12px; margin-bottom:6px;}
+    .testimonio-card p{font-size:13px; color:var(--c-text);}
+    .testimonio-card .autor{margin-top:8px; font-size:12px; font-weight:700; color:var(--c-text-mute);}
 
-/* MÓDULO 9 — COBERTURA (cap. 15) */
-.chip{display:inline-block; background:var(--c-surface-alt); padding:6px 12px; border-radius:var(--radius-full); font-size:12px; font-weight:600; margin:0 6px 6px 0;}
+    /* MÓDULO 9 — COBERTURA */
+    .chip{display:inline-block; background:var(--c-surface-alt); padding:6px 12px; border-radius:var(--radius-full); font-size:12px; font-weight:600; margin:0 6px 6px 0;}
 
-/* MÓDULO 10 — INFORMACIÓN (cap. 15) */
-.info-row{display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--c-surface-alt); font-size:13px;}
-.info-row .ic{width:20px; color:var(--c-secondary); flex:none;}
+    /* MÓDULO 10 — INFORMACIÓN */
+    .info-row{display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--c-surface-alt); font-size:13px;}
+    .info-row .ic{width:20px; color:var(--c-secondary); flex:none;}
 
-/* ==================== MÓDULO 11 — CTA FINAL (cap. 3.5, 9.6) ==================== */
-/* Reutiliza las MISMAS funciones JS de los botones rápidos — no crea lógica nueva */
-.cta-final{background:var(--c-primary); padding:var(--space-6) var(--space-5); text-align:center; color:#fff;}
-.cta-final h2{font-family:var(--font-display); font-size:18px; margin-bottom:var(--space-2);}
-.cta-final p{font-size:13px; color:#c9c9d1; margin-bottom:var(--space-4);}
+    /* ==================== MÓDULO 11 — CTA FINAL ==================== */
+    .cta-final{background:var(--c-primary); padding:var(--space-6) var(--space-5); text-align:center; color:#fff;}
+    .cta-final h2{font-family:var(--font-display); font-size:18px; margin-bottom:var(--space-2);}
+    .cta-final p{font-size:13px; color:#c9c9d1; margin-bottom:var(--space-4);}
 
-/* ==================== MÓDULO 12 — PIE DE TARJETA ==================== */
-/* Regla fija KONFÍO ZINC: SIEMPRE visible, en todas las tarjetas, sin excepción */
-.pie-tarjeta{
-  background:#000; color:rgba(255,255,255,.55); text-align:center;
-  padding:var(--space-4) var(--space-5); font-size:11px; letter-spacing:.02em;
-}
+    /* ==================== MÓDULO 12 — PIE DE TARJETA ==================== */
+    .pie-tarjeta{
+      background:#000; color:rgba(255,255,255,.55); text-align:center;
+      padding:var(--space-4) var(--space-5); font-size:11px; letter-spacing:.02em; w-full flex-shrink-0;
+    }
 
-/* Toast */
-#toast{
-  position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
-  background:var(--c-primary); color:#fff; padding:10px 18px; border-radius:var(--radius-full);
-  font-size:13px; opacity:0; visibility:hidden; transition:all var(--dur-base) var(--ease); z-index:120;
-}
-#toast.is-visible{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);}
+    /* Toast */
+    #toast{
+      position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+      background:var(--c-primary); color:#fff; padding:10px 18px; border-radius:var(--radius-full);
+      font-size:13px; opacity:0; visibility:hidden; transition:all var(--dur-base) var(--ease); z-index:120;
+    }
+    #toast.is-visible{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);}
 
-/* Reveal on scroll (AOS-lite, cap. 20) */
-.reveal{opacity:0; transform:translateY(14px); transition:opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);}
-.reveal.is-visible{opacity:1; transform:translateY(0);}
-</style>
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(14px); transition:opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);}
+    .reveal.is-visible{opacity:1; transform:translateY(0);}
+  </style>
 </head>
 <body>
 
@@ -247,62 +243,63 @@ a{color:inherit; text-decoration:none;}
 </div>
 
 <div class="card-shell">
+  <div class="main-content">
+    <!-- ============================================================
+         MÓDULO 2 — PORTADA
+         ============================================================ -->
+    <header class="portada">
+      <img class="logo" id="portada-logo" src="assets/img/logo.jpg" alt="Logo" onerror="this.style.display='none'">
+      <div class="avatar-wrap">
+        <img id="portada-foto" src="assets/img/perfil.jpg" alt="Foto de perfil">
+        <div class="badge-verificado" id="badge-verificado" title="Perfil verificado"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <h1 id="portada-nombre">[[NOMBRE]]</h1>
+      <p class="profesion" id="portada-profesion">[[PROFESIÓN]]</p>
+      <p class="tagline" id="portada-tagline">[[PROPUESTA DE VALOR EN UNA LÍNEA]]</p>
+      <div class="badge-disponible" id="badge-disponible"><span class="dot"></span> Disponible para atenderte</div>
+    </header>
+
+    <!-- ============================================================
+         MÓDULO 3 — BOTONES RÁPIDOS + CTA
+         ============================================================ -->
+    <section class="acciones-rapidas">
+      <button class="btn-principal btn-whatsapp" data-action="whatsapp"><i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp</button>
+      <button class="btn-principal btn-llamar" data-action="llamar"><i class="fa-solid fa-phone"></i> Llamar ahora</button>
+      <div class="acciones-secundarias">
+        <button class="btn-secundario" data-action="guardar"><i class="fa-solid fa-address-card"></i> Guardar contacto</button>
+        <button class="btn-secundario" data-action="compartir"><i class="fa-solid fa-share-nodes"></i> Compartir / QR</button>
+      </div>
+    </section>
+
+    <!-- Navegador de módulos internos -->
+    <nav class="nav-modulos" aria-label="Secciones de la tarjeta">
+      <button class="nav-item" data-modal="modal-servicios"><span class="ic"><i class="fa-solid fa-briefcase"></i></span>Servicios</button>
+      <button class="nav-item" data-modal="modal-galeria"><span class="ic"><i class="fa-solid fa-images"></i></span>Galería</button>
+      <button class="nav-item" data-modal="modal-videos"><span class="ic"><i class="fa-solid fa-circle-play"></i></span>Videos</button>
+      <button class="nav-item" data-modal="modal-testimonios"><span class="ic"><i class="fa-solid fa-star"></i></span>Testimonios</button>
+      <button class="nav-item" data-modal="modal-cobertura"><span class="ic"><i class="fa-solid fa-map-location-dot"></i></span>Cobertura</button>
+      <button class="nav-item" data-modal="modal-informacion"><span class="ic"><i class="fa-solid fa-circle-info"></i></span>Información</button>
+    </nav>
+
+    <!-- ============================================================
+         MÓDULO 4 — REDES SOCIALES
+         ============================================================ -->
+    <div id="redes-row"></div>
+
+    <!-- ============================================================
+         MÓDULO 11 — CTA FINAL
+         ============================================================ -->
+    <section class="cta-final">
+      <h2 id="cta-titulo">¿Hablamos?</h2>
+      <p id="cta-texto">Escríbeme y te respondo personalmente.</p>
+      <button class="btn-principal btn-whatsapp w-full" data-action="whatsapp" style="max-width:280px; margin:0 auto;">
+        <i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp
+      </button>
+    </section>
+  </div>
 
   <!-- ============================================================
-       MÓDULO 2 — PORTADA
-       ============================================================ -->
-  <header class="portada">
-    <img class="logo" id="portada-logo" src="assets/img/logo.jpg" alt="Logo" onerror="this.style.display='none'">
-    <div class="avatar-wrap">
-      <img id="portada-foto" src="assets/img/perfil.jpg" alt="Foto de perfil">
-      <div class="badge-verificado" id="badge-verificado" title="Perfil verificado"><i class="fa-solid fa-check"></i></div>
-    </div>
-    <h1 id="portada-nombre">[[NOMBRE]]</h1>
-    <p class="profesion" id="portada-profesion">[[PROFESIÓN]]</p>
-    <p class="tagline" id="portada-tagline">[[PROPUESTA DE VALOR EN UNA LÍNEA]]</p>
-    <div class="badge-disponible" id="badge-disponible"><span class="dot"></span> Disponible para atenderte</div>
-  </header>
-
-  <!-- ============================================================
-       MÓDULO 3 — BOTONES RÁPIDOS + CTA
-       ============================================================ -->
-  <section class="acciones-rapidas">
-    <button class="btn-principal btn-whatsapp" data-action="whatsapp"><i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp</button>
-    <button class="btn-principal btn-llamar" data-action="llamar"><i class="fa-solid fa-phone"></i> Llamar ahora</button>
-    <div class="acciones-secundarias">
-      <button class="btn-secundario" data-action="guardar"><i class="fa-solid fa-address-card"></i> Guardar contacto</button>
-      <button class="btn-secundario" data-action="compartir"><i class="fa-solid fa-share-nodes"></i> Compartir / QR</button>
-    </div>
-  </section>
-
-  <!-- Navegador de módulos internos -->
-  <nav class="nav-modulos" aria-label="Secciones de la tarjeta">
-    <button class="nav-item" data-modal="modal-servicios"><span class="ic"><i class="fa-solid fa-briefcase"></i></span>Servicios</button>
-    <button class="nav-item" data-modal="modal-galeria"><span class="ic"><i class="fa-solid fa-images"></i></span>Galería</button>
-    <button class="nav-item" data-modal="modal-videos"><span class="ic"><i class="fa-solid fa-circle-play"></i></span>Videos</button>
-    <button class="nav-item" data-modal="modal-testimonios"><span class="ic"><i class="fa-solid fa-star"></i></span>Testimonios</button>
-    <button class="nav-item" data-modal="modal-cobertura"><span class="ic"><i class="fa-solid fa-map-location-dot"></i></span>Cobertura</button>
-    <button class="nav-item" data-modal="modal-informacion"><span class="ic"><i class="fa-solid fa-circle-info"></i></span>Información</button>
-  </nav>
-
-  <!-- ============================================================
-       MÓDULO 4 — REDES SOCIALES (se autogenera y se oculta si CONFIG.redes está vacío)
-       ============================================================ -->
-  <div id="redes-row"></div>
-
-  <!-- ============================================================
-       MÓDULO 11 — CTA FINAL (reutiliza data-action, misma lógica)
-       ============================================================ -->
-  <section class="cta-final">
-    <h2 id="cta-titulo">¿Hablamos?</h2>
-    <p id="cta-texto">Escríbeme y te respondo personalmente.</p>
-    <button class="btn-principal btn-whatsapp w-full" data-action="whatsapp" style="max-width:280px; margin:0 auto;">
-      <i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp
-    </button>
-  </section>
-
-  <!-- ============================================================
-       MÓDULO 12 — PIE DE TARJETA (fijo, obligatorio en todas las tarjetas)
+       MÓDULO 12 — PIE DE TARJETA CON TU MARCA E INFRAESTRUCTURA UNIFICADA
        ============================================================ -->
   <footer class="pie-tarjeta">
     Creado por KONFÍO ZINC — Todos los derechos reservados
@@ -310,7 +307,7 @@ a{color:inherit; text-decoration:none;}
 </div>
 
 <!-- ============================================================
-     MÓDULO 5 — MODAL SERVICIOS (máx. 6, cap. 11.1)
+     ELEMENTOS EMERGENTES / VENTANAS MODULARES DE LA APP
      ============================================================ -->
 <div class="modal" id="modal-servicios" data-modal-root>
   <div class="modal-panel">
@@ -319,7 +316,6 @@ a{color:inherit; text-decoration:none;}
   </div>
 </div>
 
-<!-- MÓDULO 6 — MODAL GALERÍA -->
 <div class="modal" id="modal-galeria" data-modal-root>
   <div class="modal-panel">
     <div class="modal-header"><h2>Galería</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
@@ -327,7 +323,6 @@ a{color:inherit; text-decoration:none;}
   </div>
 </div>
 
-<!-- MÓDULO 7 — MODAL VIDEOS -->
 <div class="modal" id="modal-videos" data-modal-root>
   <div class="modal-panel">
     <div class="modal-header"><h2>Videos</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
@@ -335,7 +330,6 @@ a{color:inherit; text-decoration:none;}
   </div>
 </div>
 
-<!-- MÓDULO 8 — MODAL TESTIMONIOS -->
 <div class="modal" id="modal-testimonios" data-modal-root>
   <div class="modal-panel">
     <div class="modal-header"><h2>Testimonios</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
@@ -343,7 +337,6 @@ a{color:inherit; text-decoration:none;}
   </div>
 </div>
 
-<!-- MÓDULO 9 — MODAL COBERTURA -->
 <div class="modal" id="modal-cobertura" data-modal-root>
   <div class="modal-panel">
     <div class="modal-header"><h2>Cobertura</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
@@ -352,7 +345,6 @@ a{color:inherit; text-decoration:none;}
   </div>
 </div>
 
-<!-- MÓDULO 10 — MODAL INFORMACIÓN -->
 <div class="modal" id="modal-informacion" data-modal-root>
   <div class="modal-panel">
     <div class="modal-header"><h2>Información</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
@@ -360,7 +352,6 @@ a{color:inherit; text-decoration:none;}
   </div>
 </div>
 
-<!-- Modal Compartir / QR -->
 <div class="modal" id="modal-compartir" data-modal-root>
   <div class="modal-panel text-center">
     <div class="modal-header"><h2>Compartir tarjeta</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
@@ -374,22 +365,18 @@ a{color:inherit; text-decoration:none;}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-/* ============================================================
-   CONFIG — ÚNICO BLOQUE QUE SE EDITA POR CLIENTE (cap. 6.1, 18.4)
-   No modificar nada fuera de este objeto para adaptar un cliente.
-   ============================================================ */
 const CONFIG = {
   cliente: {
     nombre: "NP Style",
     profesion: "Estudio de Belleza · Corte y Color",
     tagline: "Diseños de color, alisados y terapias capilares en Yopal",
     disponible: true,
-    verificado: false // sin foto de perfil personal todavía — se activa cuando Nelson envíe una foto real
+    verificado: false 
   },
   colores: {
-    primary:  "#3B2418", // marrón oscuro tomado del logo NP Style
-    secondary:"#B98A5E", // dorado/tostado del logo
-    accent:   "#F4EFE3"  // crema del fondo del logo
+    primary:  "#3B2418", 
+    secondary:"#B98A5E", 
+    accent:   "#F4EFE3"  
   },
   contacto: {
     telefonoDisplay: "+57 314 539 2108",
@@ -399,47 +386,28 @@ const CONFIG = {
     email: ""
   },
   urlTarjeta: "https://konfiozinc.github.io/np-style/",
-
-  // MÓDULO 4 — Redes. PENDIENTE: Nelson dijo que sí maneja redes pero no envió los links/usuarios todavía.
-  // En cuanto los mande, se pegan aquí y los botones aparecen solos.
   redes: {
     instagram: "",
     facebook: "",
     tiktok: "",
     linkedin: ""
   },
-
-  // MÓDULO 5 — Servicios confirmados por el cliente. Quedan cupo para 2 más (máx. 6, cap. 11.1)
   servicios: [
     { icono:"fa-solid fa-palette", nombre:"Diseños de color", descripcion:"Coloración personalizada según tu tono de piel y estilo." },
     { icono:"fa-solid fa-wand-magic-sparkles", nombre:"Alisados", descripcion:"Alisado profesional con acabado natural y duradero." },
     { icono:"fa-solid fa-spray-can-sparkles", nombre:"Terapia Micro Mist", descripcion:"Tratamiento capilar de hidratación profunda." },
     { icono:"fa-solid fa-scissors", nombre:"Corte", descripcion:"Corte a la medida de tu rostro y estilo de vida." }
   ],
-
-  // MÓDULO 6 — Galería (fotos reales de trabajos enviadas por el cliente)
   galeria: [
     { src:"assets/img/galeria/1.jpg", alt:"Balayage rubio NP Style" },
     { src:"assets/img/galeria/2.jpg", alt:"Diseño de color e iluminaciones NP Style" }
   ],
-
-  // MÓDULO 7 — Videos. Pendiente: Nelson no ha enviado video todavía.
-  videos: [
-    // { poster:"assets/img/videos/1.jpg", youtubeId:"", titulo:"" }
-  ],
-
-  // MÓDULO 8 — Testimonios reales únicamente (cap. 14.1). Pendiente: no se han enviado testimonios.
-  testimonios: [
-    // { nombre:"", ciudad:"", texto:"", estrellas:5 }
-  ],
-
-  // MÓDULO 9 — Cobertura
+  videos: [],
+  testimonios: [],
   cobertura: {
     texto: "Atención en nuestro estudio en Yopal, Casanare.",
     zonas: ["Yopal", "Casanare"]
   },
-
-  // MÓDULO 10 — Información. Pendiente: horario exacto, dirección del estudio y correo.
   informacion: {
     horario: "",
     direccion: "",
@@ -447,19 +415,14 @@ const CONFIG = {
   }
 };
 
-/* ============================================================
-   MOTOR — no editar para personalizar un cliente (cap. 18)
-   ============================================================ */
 (function(){
   "use strict";
 
-  // ---- Aplicar tokens de color desde CONFIG (cap. 6.1) ----
   const root = document.documentElement.style;
   root.setProperty('--c-primary', CONFIG.colores.primary);
   root.setProperty('--c-secondary', CONFIG.colores.secondary);
   root.setProperty('--c-accent', CONFIG.colores.accent);
 
-  // ---- Portada ----
   document.getElementById('portada-nombre').textContent = CONFIG.cliente.nombre;
   document.getElementById('portada-profesion').textContent = CONFIG.cliente.profesion;
   document.getElementById('portada-tagline').textContent = CONFIG.cliente.tagline;
@@ -467,7 +430,6 @@ const CONFIG = {
   if(!CONFIG.cliente.verificado) document.getElementById('badge-verificado').classList.add('hidden');
   if(!CONFIG.cliente.disponible) document.getElementById('badge-disponible').classList.add('hidden');
 
-  // ---- MÓDULO 4: Redes — se oculta limpio si no hay datos (cap. 3.2) ----
   const redesMap = [
     ["instagram","fa-brands fa-instagram"],
     ["facebook","fa-brands fa-facebook-f"],
@@ -489,7 +451,6 @@ const CONFIG = {
   });
   if(!hayRedes) redesRow.classList.add('hidden');
 
-  // ---- MÓDULO 5: Servicios (límite 6, cap. 11.1) ----
   const servicios = CONFIG.servicios.slice(0,6);
   const listaServicios = document.getElementById('lista-servicios');
   if(servicios.length){
@@ -504,7 +465,6 @@ const CONFIG = {
     listaServicios.innerHTML = `<p style="font-size:13px;color:var(--c-text-mute);">Servicios pendientes de cargar.</p>`;
   }
 
-  // ---- MÓDULO 6: Galería (Swiper, cap. 12.2) ----
   let swiperInstance = null;
   if(CONFIG.galeria.length){
     const wrapper = document.getElementById('swiper-wrapper');
@@ -515,7 +475,6 @@ const CONFIG = {
     document.querySelector('[data-modal="modal-galeria"]').classList.add('hidden');
   }
 
-  // ---- MÓDULO 7: Videos (carga bajo demanda, sin autoplay — cap. 13.3) ----
   const listaVideos = document.getElementById('lista-videos');
   if(CONFIG.videos.length){
     CONFIG.videos.forEach((v,i)=>{
@@ -535,7 +494,6 @@ const CONFIG = {
     document.querySelector('[data-modal="modal-videos"]').classList.add('hidden');
   }
 
-  // ---- MÓDULO 8: Testimonios (reales, cap. 14.1) ----
   const listaTestimonios = document.getElementById('lista-testimonios');
   if(CONFIG.testimonios.length){
     CONFIG.testimonios.forEach(t=>{
@@ -551,7 +509,6 @@ const CONFIG = {
     document.querySelector('[data-modal="modal-testimonios"]').classList.add('hidden');
   }
 
-  // ---- MÓDULO 9: Cobertura ----
   if(CONFIG.cobertura.texto || CONFIG.cobertura.zonas.length){
     document.getElementById('cobertura-texto').textContent = CONFIG.cobertura.texto;
     const chips = document.getElementById('cobertura-chips');
@@ -562,7 +519,6 @@ const CONFIG = {
     document.querySelector('[data-modal="modal-cobertura"]').classList.add('hidden');
   }
 
-  // ---- MÓDULO 10: Información (coherente con vCard, cap. 15.5) ----
   const info = CONFIG.informacion;
   const listaInfo = document.getElementById('lista-informacion');
   const infoRows = [
@@ -579,7 +535,6 @@ const CONFIG = {
     document.querySelector('[data-modal="modal-informacion"]').classList.add('hidden');
   }
 
-  // ---- Acciones (botones rápidos + CTA final comparten la MISMA lógica, cap. 9.6) ----
   function accionWhatsApp(){
     const msg = encodeURIComponent(CONFIG.contacto.mensajeWhatsapp);
     window.open(`https://wa.me/${CONFIG.contacto.whatsapp}?text=${msg}`, '_blank');
@@ -611,7 +566,7 @@ const CONFIG = {
       try{
         await navigator.share({ title: CONFIG.cliente.nombre, text: CONFIG.cliente.tagline, url: CONFIG.urlTarjeta });
         return;
-      }catch(e){ /* usuario canceló, no hacer nada */ }
+      }catch(e){ }
     }
     abrirModal('modal-compartir');
     const qrEl = document.getElementById('qr-code');
@@ -632,7 +587,6 @@ const CONFIG = {
     if(fn) fn();
   });
 
-  // ---- Toast ----
   let toastTimer;
   function mostrarToast(msg){
     const t = document.getElementById('toast');
@@ -642,7 +596,6 @@ const CONFIG = {
     toastTimer = setTimeout(()=> t.classList.remove('is-visible'), 2200);
   }
 
-  // ---- Modales genéricos ----
   function abrirModal(id){
     document.getElementById(id).classList.add('is-open');
     document.body.style.overflow = 'hidden';
@@ -669,14 +622,12 @@ const CONFIG = {
     }
   });
 
-  // ---- MÓDULO 1: Splash (600–1400ms, cap. 8.2) ----
   const splash = document.getElementById('splash');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   window.addEventListener('load', function(){
     setTimeout(()=> splash.classList.add('is-hidden'), reduced ? 0 : 900);
   });
 
-  // ---- Reveal on scroll (cap. 20.3) ----
   document.querySelectorAll('.acciones-rapidas, .nav-modulos, #redes-row, .cta-final').forEach(el=> el.classList.add('reveal'));
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('is-visible'); });
