@@ -102,7 +102,7 @@
     @keyframes dotPulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
 
     /* MÓDULO 3 — BOTONES RÁPIDOS */
-    .acciones-rapidas{padding:var(--space-4) var(--space-5); display:flex; flex-direction:column; gap:var(--space-2.5);}
+    .acciones-rapidas{padding:var(--space-4) var(--space-5); display:flex; flex-direction:column; gap:var(--space-3);}
     .btn-principal{
       display:flex; align-items:center; justify-content:center; gap:10px;
       padding:14px; border-radius:var(--radius-md); font-weight:700; font-size:15px;
@@ -152,7 +152,7 @@
       border-top: 3px solid var(--c-secondary);
     }
     .modal.is-open .modal-panel{transform:translateY(0);}
-    .modal-header{display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--space-4); border-b: 1px solid #f1f5f9; padding-bottom:8px;}
+    .modal-header{display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--space-4); border-bottom: 1px solid #f1f5f9; padding-bottom:8px;}
     .modal-header h2{font-family:var(--font-display); font-size:19px; color:var(--c-primary);}
     .modal-close{width:32px; height:32px; border-radius:var(--radius-full); background:var(--c-surface-alt); display:flex; align-items:center; justify-content:center; color:var(--c-text);}
 
@@ -161,7 +161,7 @@
     .servicio-item h3{font-size:14px; font-weight:700; color:var(--c-primary);}
     .servicio-item p{font-size:12.5px; color:var(--c-text-mute); margin-top:2px;}
 
-    .info-row{display:flex; gap:10px; padding:12px 0; border-bottom:1px solid var(--c-surface-alt); font-size:13px; items-center;}
+    .info-row{display:flex; gap:10px; padding:12px 0; border-bottom:1px solid var(--c-surface-alt); font-size:13px; align-items:center;}
     .info-row .ic{width:20px; color:var(--c-secondary); flex:none; font-size:16px;}
 
     /* MÓDULO 11 — CTA FINAL */
@@ -184,3 +184,62 @@
       border: 1px solid var(--c-secondary);
     }
     #toast.is-visible{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);}
+
+    /* ==================== SECCIONES NUEVAS ==================== */
+    .seccion-titulo{
+      font-family:var(--font-display); font-size:16px; font-weight:800; color:var(--c-primary);
+      margin-bottom:var(--space-3); display:flex; align-items:center; gap:8px;
+    }
+    .seccion-titulo::after{content:""; flex:1; height:1px; background:#f1f5f9;}
+
+    /* Sobre el estudio */
+    .sobre{padding:var(--space-4) var(--space-5) 0;}
+    .sobre p{font-size:13px; color:var(--c-text-mute); line-height:1.6;}
+    .chip-mapa{
+      display:inline-flex; align-items:center; gap:8px; margin-top:var(--space-3);
+      background:var(--c-accent); color:var(--c-primary); font-weight:600; font-size:13px;
+      padding:10px 14px; border-radius:var(--radius-full); border:1px solid var(--c-secondary);
+    }
+
+    /* Horarios */
+    .horarios{padding:var(--space-4) var(--space-5) 0;}
+    .horario-row{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0; border-bottom:1px solid var(--c-surface-alt); font-size:13.5px;
+    }
+    .horario-dias{font-weight:600; color:var(--c-primary);}
+    .horario-horas{color:var(--c-secondary); font-weight:700;}
+    .horarios-nota{font-size:11.5px; color:var(--c-text-mute); margin-top:var(--space-3);}
+
+    /* Precios en servicios */
+    .servicio-cuerpo{flex:1;}
+    .precio{
+      display:inline-block; margin-top:6px; font-size:12px; font-weight:700;
+      color:var(--c-primary); background:var(--c-accent); padding:3px 10px; border-radius:var(--radius-full);
+    }
+    .precio-pend{background:var(--c-surface-alt); color:var(--c-text-mute); font-weight:600; border:1px dashed #d7dbe2;}
+
+    /* Galería Swiper (fotos verticales) */
+    #swiper-galeria{width:100%; height:440px; border-radius:var(--radius-md); overflow:hidden; background:var(--c-surface-alt);}
+    #swiper-galeria .swiper-slide img{width:100%; height:100%; object-fit:cover; display:block;}
+    .ph{
+      width:100%; height:100%; min-height:340px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:10px; background:linear-gradient(160deg, var(--c-surface-alt), #efe9dd); color:var(--c-text-mute); font-size:13px;
+    }
+    .ph i{font-size:34px; color:var(--c-secondary);}
+    .swiper-pagination-bullet-active{background:var(--c-secondary) !important;}
+    .galeria-nota{font-size:10.5px; text-align:center; color:var(--c-text-mute); margin-top:12px;}
+
+    /* Información: enlaces y chips */
+    .info-link:hover{color:var(--c-secondary);}
+    .info-sub{font-family:var(--font-display); font-size:14px; color:var(--c-primary); margin:var(--space-4) 0 var(--space-2);}
+    .chip{
+      display:inline-flex; margin:0 6px 6px 0; padding:7px 14px; border-radius:var(--radius-full);
+      background:var(--c-surface-alt); color:var(--c-primary); font-size:12.5px; font-weight:600; border:1px solid #e2e8f0;
+    }
+
+    /* Pie de tarjeta */
+    .pie-links{margin-top:6px; font-size:10.5px; opacity:.9;}
+    .pie-links a{color:var(--c-secondary);}
+
+    :focus-visible{outline:2px solid var(--c-secondary); outline-offset:2px; border-radius:4px;}

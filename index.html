@@ -2,9 +2,67 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <title>NP Style Corte y Color — Tarjeta Digital | KONFÍO ZINC</title>
-  <meta name="description" content="Estudio de belleza en Yopal, Casanare. Diseños de color, alisados, terapias Micro Mist y corte.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3B2418" />
+  <title>NP Style Corte y Color — Estudio de Belleza en Yopal | KONFÍO ZINC</title>
+  <meta name="description" content="Estudio de belleza en Yopal, Casanare. Diseños de color, alisados, terapia Micro Mist y cortes a la medida. Agenda tu cita por WhatsApp.">
+
+  <!-- SEO -->
+  <link rel="canonical" href="https://konfiozinc.github.io/np-style/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="NP Style Corte y Color" />
+  <meta property="og:title" content="NP Style Corte y Color — Estudio de Belleza en Yopal" />
+  <meta property="og:description" content="Diseños de color, alisados, terapia Micro Mist y cortes a la medida. Agenda tu cita." />
+  <meta property="og:url" content="https://konfiozinc.github.io/np-style/" />
+  <meta property="og:image" content="https://konfiozinc.github.io/np-style/logo.jpg" />
+  <meta property="og:locale" content="es_CO" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NP Style Corte y Color — Estudio de Belleza en Yopal" />
+  <meta name="twitter:description" content="Diseños de color, alisados, terapia Micro Mist y cortes a la medida." />
+  <meta name="twitter:image" content="https://konfiozinc.github.io/np-style/logo.jpg" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="icons/favicon-64.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-180.png" />
+
+  <!-- Datos estructurados (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "NP Style Corte y Color",
+    "description": "Estudio de belleza en Yopal, Casanare: diseños de color, alisados, terapia Micro Mist y cortes a la medida.",
+    "telephone": "+573145392108",
+    "email": "npstyleyopal@gmail.com",
+    "url": "https://konfiozinc.github.io/np-style/",
+    "image": "https://konfiozinc.github.io/np-style/logo.jpg",
+    "priceRange": "$$",
+    "address": { "@type": "PostalAddress", "addressLocality": "Yopal", "addressRegion": "Casanare", "addressCountry": "CO" },
+    "openingHours": "Tu-Sa 08:00-19:00",
+    "makesOffer": [
+      { "@type": "Offer", "name": "Diseños de color" },
+      { "@type": "Offer", "name": "Alisados" },
+      { "@type": "Offer", "name": "Terapia Micro Mist" },
+      { "@type": "Offer", "name": "Corte" }
+    ]
+  }
+  </script>
+
+  <!-- Analytics (GA4): pega el ID real reemplazando G-XXXXXXXXXX) -->
+  <script>
+  const GA_ID = 'G-XXXXXXXXXX';
+  if (GA_ID && !/^G-XXXX/.test(GA_ID)) {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+  </script>
 
   <!-- Fuentes e Iconografía Oficiales -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,110 +71,122 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
 
-  
-<link rel="stylesheet" href="styles.css">
-
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- MÓDULO 1 — SPLASH -->
+<!-- SPLASH -->
 <div id="splash" role="status" aria-live="polite">
-  <img id="splash-logo" src="logo.jpg" alt="Logo">
+  <img src="logo.jpg" alt="Logotipo de NP Style Corte y Color">
   <span>KONFÍO ZINC</span>
 </div>
 
 <div class="card-shell">
   <div class="main-content">
-    
-    <!-- MÓDULO 2 — PORTADA (Rutas Corregidas a la Raíz) -->
+
+    <!-- HERO / PORTADA -->
     <header class="portada">
-      <img class="logo" id="portada-logo" src="logo.jpg" alt="Logo" onerror="this.style.display='none'">
       <div class="avatar-wrap">
-        <img id="portada-foto" src="logo.jpg" alt="Estudio NP Style">
-        <div class="badge-verificado" id="badge-verificado" title="Perfil verificado"><i class="fa-solid fa-check"></i></div>
+        <img id="portada-logo" src="logo.jpg" alt="Logotipo de NP Style Corte y Color">
+        <div class="badge-verificado" title="Perfil verificado"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
       </div>
       <h1 id="portada-nombre">NP Style</h1>
       <p class="profesion" id="portada-profesion">Estudio de Belleza · Corte y Color</p>
       <p class="tagline" id="portada-tagline">Diseños de color, alisados y terapias capilares en Yopal</p>
-      <div class="badge-disponible" id="badge-disponible"><span class="dot"></span> Disponible para atenderte</div>
+      <div class="badge-disponible"><span class="dot"></span> Disponible para atenderte</div>
     </header>
 
-    <!-- MÓDULO 3 — BOTONES RÁPIDOS -->
+    <!-- BOTONES RÁPIDOS -->
     <section class="acciones-rapidas">
-      <button class="btn-principal btn-whatsapp" data-action="whatsapp"><i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp</button>
-      <button class="btn-principal btn-llamar" data-action="llamar"><i class="fa-solid fa-phone"></i> Llamar ahora</button>
+      <button class="btn-principal btn-whatsapp" data-action="whatsapp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Agendar cita por WhatsApp</button>
+      <button class="btn-principal btn-llamar" data-action="llamar"><i class="fa-solid fa-phone" aria-hidden="true"></i> Llamar ahora</button>
       <div class="acciones-secundarias">
-        <button class="btn-secundario" data-action="guardar"><i class="fa-solid fa-address-card"></i> Guardar contacto</button>
-        <button class="btn-secundario" data-action="compartir"><i class="fa-solid fa-share-nodes"></i> Compartir / QR</button>
+        <button class="btn-secundario" data-action="guardar"><i class="fa-solid fa-address-card" aria-hidden="true"></i> Guardar contacto</button>
+        <button class="btn-secundario" data-action="compartir"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Compartir / QR</button>
       </div>
     </section>
 
-    <!-- Navegador de módulos internos -->
+    <!-- NAVEGADOR DE MÓDULOS -->
     <nav class="nav-modulos" aria-label="Secciones de la tarjeta">
-      <button class="nav-item" data-modal="modal-servicios"><span class="ic"><i class="fa-solid fa-briefcase"></i></span>Servicios</button>
-      <button class="nav-item" data-modal="modal-galeria"><span class="ic"><i class="fa-solid fa-images"></i></span>Galería</button>
-      <button class="nav-item" data-modal="modal-cobertura"><span class="ic"><i class="fa-solid fa-map-location-dot"></i></span>Cobertura</button>
-      <button class="nav-item" data-modal="modal-informacion"><span class="ic"><i class="fa-solid fa-circle-info"></i></span>Información</button>
+      <button class="nav-item" data-modal="modal-servicios"><span class="ic"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>Servicios</button>
+      <button class="nav-item" data-modal="modal-galeria"><span class="ic"><i class="fa-solid fa-images" aria-hidden="true"></i></span>Galería</button>
+      <button class="nav-item" data-scroll="horarios"><span class="ic"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>Horarios</button>
+      <button class="nav-item" data-modal="modal-informacion"><span class="ic"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>Información</button>
     </nav>
 
-    <!-- MÓDULO 4 — REDES SOCIALES -->
-    <div id="redes-row"></div>
+    <!-- SOBRE EL ESTUDIO -->
+    <section class="sobre" id="sobre">
+      <h2 class="seccion-titulo">Sobre el estudio</h2>
+      <p>Estudio de belleza en <strong>Yopal, Casanare</strong>, especializado en diseños de color, alisados, terapia Micro Mist y cortes a la medida de cada rostro y estilo de vida.</p>
+      <a class="chip-mapa" href="https://www.google.com/maps/search/?api=1&query=Yopal%2C%20Casanare%2C%20Colombia" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Yopal, Casanare · ver en el mapa
+      </a>
+    </section>
 
-    <!-- MÓDULO 11 — CTA FINAL -->
+    <!-- HORARIOS -->
+    <section class="horarios" id="horarios">
+      <h2 class="seccion-titulo">Horarios</h2>
+      <div id="horarios-tabla" aria-live="polite"></div>
+      <p class="horarios-nota">Lunes y festivos: consúltanos por WhatsApp.</p>
+    </section>
+
+    <!-- REDES SOCIALES (solo se muestran si hay enlaces reales) -->
+    <div id="redes-row" role="group" aria-label="Redes sociales"></div>
+
+    <!-- CTA FINAL -->
     <section class="cta-final">
-      <h2 id="cta-titulo">¿Hablamos?</h2>
-      <p id="cta-texto">Escríbeme y te respondo personalmente.</p>
+      <h2 id="cta-titulo">Agenda tu cita</h2>
+      <p id="cta-texto">Escríbenos y te respondemos personalmente para reservar tu espacio.</p>
       <button class="btn-principal btn-whatsapp w-full" data-action="whatsapp" style="max-width:280px; margin:0 auto;">
-        <i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Agendar cita por WhatsApp
       </button>
     </section>
   </div>
 
-  <!-- MÓDULO 12 — PIE DE TARJETA MANDATORIO -->
+  <!-- PIE DE TARJETA -->
   <footer class="pie-tarjeta">
-    Creado por <a href="https://konfiozinc.github.io/" target="_blank">KONFÍO ZINC</a> — Todos los derechos reservados
+    <div>Creado por <a href="https://konfiozinc.github.io/" target="_blank" rel="noopener">KONFÍO ZINC</a> — Todos los derechos reservados</div>
+    <div class="pie-links">
+      <a href="privacidad.html">Política de privacidad</a> · © <span id="anio">2025</span> NP Style
+    </div>
   </footer>
 </div>
 
-<!-- ==================== MODALES OPERATIVOS ==================== -->
+<!-- ==================== MODALES ==================== -->
 
-<div class="modal" id="modal-servicios" data-modal-root>
+<div class="modal" id="modal-servicios" data-modal-root role="dialog" aria-modal="true" aria-label="Servicios">
   <div class="modal-panel">
-    <div class="modal-header"><h2>Servicios</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="modal-header"><h2>Servicios</h2><button class="modal-close" data-close aria-label="Cerrar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
     <div id="lista-servicios"></div>
   </div>
 </div>
 
-<div class="modal" id="modal-galeria" data-modal-root>
+<div class="modal" id="modal-galeria" data-modal-root role="dialog" aria-modal="true" aria-label="Galería de trabajos">
   <div class="modal-panel">
-    <div class="modal-header"><h2>Galería de Trabajos</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="modal-header"><h2>Galería de Trabajos</h2><button class="modal-close" data-close aria-label="Cerrar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
     <div class="swiper" id="swiper-galeria">
         <div class="swiper-wrapper" id="swiper-wrapper"></div>
+        <div class="swiper-pagination"></div>
     </div>
-    <p style="font-size:10px; text-align:center; color:var(--c-text-mute); margin-top:12px;">Desliza para ver fotos reales de nuestros procedimientos.</p>
+    <p class="galeria-nota">Desliza para ver fotos reales de nuestros procedimientos.</p>
   </div>
 </div>
 
-<div class="modal" id="modal-cobertura" data-modal-root>
+<div class="modal" id="modal-informacion" data-modal-root role="dialog" aria-modal="true" aria-label="Información de contacto">
   <div class="modal-panel">
-    <div class="modal-header"><h2>Zonas de Atención</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
-    <p id="cobertura-texto" style="font-size:13px; color:var(--c-text-mute); margin-bottom:var(--space-3);"></p>
+    <div class="modal-header"><h2>Información</h2><button class="modal-close" data-close aria-label="Cerrar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+    <div id="lista-informacion"></div>
+    <h3 class="info-sub">Zonas de atención</h3>
     <div id="cobertura-chips"></div>
   </div>
 </div>
 
-<div class="modal" id="modal-informacion" data-modal-root>
-  <div class="modal-panel">
-    <div class="modal-header"><h2>Información Comercial</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
-    <div id="lista-informacion"></div>
-  </div>
-</div>
-
-<div class="modal" id="modal-compartir" data-modal-root>
+<div class="modal" id="modal-compartir" data-modal-root role="dialog" aria-modal="true" aria-label="Compartir tarjeta">
   <div class="modal-panel text-center">
-    <div class="modal-header"><h2>Compartir Tarjeta</h2><button class="modal-close" data-close><i class="fa-solid fa-xmark"></i></button></div>
-    <div id="qr-code" style="display:flex; justify-content:center; margin:var(--space-4) 0;"></div>
-    <button class="btn-secundario w-full" data-action="copiar-link"><i class="fa-solid fa-link"></i> Copiar enlace de la tarjeta</button>
+    <div class="modal-header"><h2>Compartir Tarjeta</h2><button class="modal-close" data-close aria-label="Cerrar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+    <div id="qr-code" style="display:flex; justify-content:center; margin:16px 0;"></div>
+    <button class="btn-secundario w-full" id="btn-share-nativo" style="display:none;"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Compartir con tus apps</button>
+    <button class="btn-secundario w-full" data-action="copiar-link" style="margin-top:8px;"><i class="fa-solid fa-link" aria-hidden="true"></i> Copiar enlace de la tarjeta</button>
   </div>
 </div>
 
